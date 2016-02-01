@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "PlaceInDetailView";
+}
+
+<h2>PlaceInDetailView</h2>
+
+<link href="~/Content/MetroCSS/MetroJs.css" rel="stylesheet" />
+<link href="~/Content/CustomScrollBar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-lg-2">
+            <img src="~/Images/srilanka-travel-map.png" class="col-md-12 col-lg-12" />
+        </div>
+        <div class="myScrollBar mCustomScrollbar col-md-10 col-lg-10">
+            <div class="container" ng-controller="gridController">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div ng-repeat="item in districPlacesSize">
+                        <div class="trans">
+                            <div data-mode={{item.data_mode}} data-start-now="true" class="live-tile trans" data-repeat='0' ng-click="hello(item.data_mode)">
+                                <div>
+                                    <div class="tile-title accent trans accentHover">slide tile</div>
+                                    <img class="full" ng-src="{{item.image1}}" alt="1" />
+                                </div>
+                                <div>
+                                    <div class="tile-title accent trans">slide tile</div>
+                                    <img class="full" ng-src={{item.image2}} alt="2" />
+                                </div>
+                                <div>
+                                    <div class="tile-title accent trans">slide tile</div>
+                                    <img class="full" ng-src={{item.image3}} alt="3" />
+                                </div>
+                                <div>
+                                    <div class="tile-title accent trans">slide tile</div>
+                                    <img class="full" ng-src={{item.image4}} alt="4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>Keep space in here</h2>
+    </div>
+</div>
+
+<script src="~/Scripts/AngularJS/angular.min.js"></script>
+<script src="~/Scripts/jquery-2.2.0.min.js"></script>
+<script src="~/Scripts/MetroJS/MetroJs.min.js"></script>
+<script src="~/Scripts/CustomScrollBar/jquery.mCustomScrollbar.min.js"></script>
+<script src="~/Scripts/CustomScrollBar/jquery.mousewheel.min.js"></script>
+<script src="~/Scripts/AngularJS/app.js"></script>
+<script src="~/Scripts/AngularJS/MetroJS/GridController.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+
+        $(".myScrollBar").mCustomScrollbar({
+            theme: "dark-3",
+            setHeight: 500
+
+        });
+
+
+        function getRandomOptions() {
+
+            var doIt = Math.floor(Math.random() * 1001) % 2 == 0;
+            return {
+                index: "next",
+                delay: 1000,
+                animationDirection: doIt ? 'forward' :'backward',
+                direction: doIt ? 'vertical' : 'horizontal'
+            };
+        }
+
+        $(".live-tile").liveTile({
+            animationComplete: function (tileData) {
+                $(this).liveTile("goto", getRandomOptions());
+            },
+            click: function () {
+                // for the get hand icon when hover it to a item
+            }
+        }).liveTile("goto", getRandomOptions());
+    });
+
+
+</script>

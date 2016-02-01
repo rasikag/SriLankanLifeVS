@@ -1,0 +1,225 @@
+﻿        @*<hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>*@
+
+
+	    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">*@
+
+
+
+	@Styles.Render("~/Content/css")
+
+
+
+
+	<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+@*@RenderSection("scripts", required: false)*@
+
+
+
+                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/2.jpg);"></div>
+                        <h2>Regula aurea.</h2>
+                        <blockquote><p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p><cite>Albert Schweitzer</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/3.jpg);"></div>
+                        <h2>Dum spiro, spero.</h2>
+                        <blockquote><p>Thousands of people who say they 'love' animals sit down once or twice a day to enjoy the flesh of creatures who have been utterly deprived of everything that could make their lives worth living and who endured the awful suffering and the terror of the abattoirs.</p><cite>Dame Jane Morris Goodall</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/4.jpg);"></div>
+                        <h2>Donna nobis pacem.</h2>
+                        <blockquote><p>The human body has no more need for cows' milk than it does for dogs' milk, horses' milk, or giraffes' milk.</p><cite>Michael Klaper M.D.</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/5.jpg);"></div>
+                        <h2>Acta Non Verba.</h2>
+                        <blockquote><p>I think if you want to eat more meat you should kill it yourself and eat it raw so that you are not blinded by the hypocrisy of having it processed for you.</p><cite>Margi Clarke</cite></blockquote>
+                    </div>
+                </div>
+
+
+
+				                    //$nav.each(function (i) {
+
+                    //    $(this).on('click', function (event) {
+
+                    //        var $dot = $(this);
+                    //        console.log(event);
+                    //        if (!slitslider.isActive()) {
+
+                    //            $nav.removeClass('nav-dot-current');
+                    //            $dot.addClass('nav-dot-current');
+
+                    //        }
+
+                    //        slitslider.jump(i + 1);
+                    //        return false;
+
+                    //    });
+
+                    //});
+
+                    //setInterval(function () {
+                    //    slitslider.next();
+                    //    return false;
+                    //}, 5000);
+
+
+					var $navArrows = $('#nav-arrows'),
+                //$nav = $('#nav-dots > span'),
+                slitslider = $('#slider').slitslider({
+                    autoplay: true,
+                    interval: 4000,
+                    //onBeforeChange: function (slide, pos) {
+
+                    //    $nav.removeClass('nav-dot-current');
+                    //    $nav.eq(pos).addClass('nav-dot-current');
+
+                    //}
+                }),
+
+
+
+
+
+
+				<style>
+        .header {
+            padding: 1em 0;
+            background: rgba(0, 0, 0, 0.68);
+        }
+
+        .logo {
+            float: left;
+            width: 25%;
+        }
+
+            .logo h1 {
+                margin: 0;
+            }
+
+                .logo h1 a {
+                    color: #FFF;
+                    font-size: 1em;
+                    font-family: 'Pacifico';
+                    text-decoration: none;
+                }
+
+                    .logo h1 a span {
+                        color: #ff6a4a;
+                    }
+
+        .top-nav {
+            float: right;
+            width: 72%;
+        }
+
+        .navbar-default {
+            border: none !important;
+            background: none !important;
+            margin: 0 !important;
+            min-height: 0 !important;
+        }
+
+            .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+                background: none !important;
+            }
+
+        div#bs-example-navbar-collapse-1 {
+            float: right;
+            padding: 0;
+        }
+
+        .top-nav ul {
+            padding: 0;
+            margin: .5em 0 0 0;
+            float: none;
+        }
+
+            .top-nav ul li {
+                display: inline-block;
+                margin: 0 1.3em !important;
+                float: none;
+            }
+
+        .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+            background: none !important;
+        }
+
+        .top-nav ul li a {
+            color: #FFF !important;
+            font-size: 1em;
+            margin: 0;
+            text-decoration: none;
+            padding: 0;
+        }
+
+            .top-nav ul li a:hover {
+                color: #ff6a4a !important;
+            }
+
+            .top-nav ul li a.active {
+                color: #ff6a4a !important;
+            }
+    </style>

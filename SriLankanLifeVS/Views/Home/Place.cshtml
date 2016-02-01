@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Place";
+}
+<div class="container">
+    <div class="row">
+        <h1>Kandy</h1>
+    </div>
+</div>
+<style>
+    .carousel {
+        height: 50%;
+    }
+
+    .item,
+    .active,
+    .carousel-inner {
+        height: 100%;
+    }
+
+    /* Background images are set within the HTML using inline CSS, not here */
+
+    .fill {
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+</style>
+
+<script src="~/Scripts/jquery-2.2.0.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myCarousel').carousel({
+            interval: 3000
+        })
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <header id="myCarousel" class="carousel slide">
+                <!-- Indicators -->
+                @*<ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>*@
+
+                <!-- Wrapper for Slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <!-- Set the first background image using inline CSS below. -->
+                        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                    </div>
+                    <div class="item">
+                        <!-- Set the second background image using inline CSS below. -->
+                        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                    </div>
+                    <div class="item">
+                        <!-- Set the third background image using inline CSS below. -->
+                        <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
+
+            </header>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <h3>Quick Info</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, id sit odio vidisse, viris equidem interesset per eu. Pro ne euismod graecis accusam, te agam liberavisse philosophia vix.
+                    Id cum animal invenire, no doctus eruditi platonem eos, ut quo dolores percipitur. Detracto facilisi cu qui, vix nostro interpretaris eu. Cu inani congue soleat eum, cu ludus melius ornatus per.
+                    Vix no decore graeci, quot falli usu cu. His natum putent placerat ea, ei vis tempor detracto.
+
+                    Id aeque persius accommodare nam, pri noster blandit ex. Ut omnis tation molestiae ius, qui et sale phaedrum ocurreret.
+                    Ad vel tollit deleniti, nam in assum volumus. Soluta singulis pri ea, cum iisque officiis luptatum ad, has erat appetere quaerendum ea.
+                    Possit incorrupte vis no.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Description</h3>
+            <p>
+                Lorem ipsum dolor sit amet, id sit odio vidisse, viris equidem interesset per eu. Pro ne euismod graecis accusam, te agam liberavisse philosophia vix.
+                Id cum animal invenire, no doctus eruditi platonem eos, ut quo dolores percipitur. Detracto facilisi cu qui, vix nostro interpretaris eu. Cu inani congue soleat eum, cu ludus melius ornatus per.
+                Vix no decore graeci, quot falli usu cu. His natum putent placerat ea, ei vis tempor detracto.
+            </p>
+        </div>
+        <div class="col-md-4" id="map" style="width:300px;height:200px;">
+            <h3>Location</h3>
+
+            <script>
+                function initMap() {
+                    var myLatlng = { lat: -25.363, lng: 131.044 };
+
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 8,
+                        center: myLatlng
+                    });
+
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map
+                    });
+
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+
+        </div>
+    </div>
+
+    <hr />
+    <hr />
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <button class="btn btn-default">Add Image</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-default">Add Video</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-default">Add Comment</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-default">Nothing</button>
+        </div>
+    </div>
+
+</div>
+
