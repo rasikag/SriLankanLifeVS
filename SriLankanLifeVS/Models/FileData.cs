@@ -10,6 +10,7 @@ namespace SriLankanLifeVS.Models
     {
         public string FileName { get; set; }
         public string FileExtension { get; set; }
+        public long FileSize { get; set; }
     }
 
 }

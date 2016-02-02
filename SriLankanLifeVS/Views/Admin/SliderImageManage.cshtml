@@ -29,15 +29,15 @@
                     <li class="list-group-item" ng-show="vm.photos.length === 0">no photos</li>
                     <li ng-repeat="photo in vm.photos" class="list-group-item">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-11 col-xs-10 wraptext">{{photo.Name}}</div>
+                            <div class="col-lg-3 col-md-3 col-sm-11 col-xs-10 wraptext">{{photo.ImageName}}</div>
                             <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Size}}</div>
                             @*<div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Created | date: short}}</div>
                             <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Modified | date: short}}</div>*@
                             <div class="col-lg-2 col-md-2">
-                                <img ng-src="/Images/FullScreenSlider/{{photo.Name}}" style="max-height: 250px" class="img-responsive" />
+                                <img ng-src="/Images/FullScreenSlider/{{photo.ImageName}}" style="max-height: 250px" class="img-responsive" />
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                                <button type="button" class="btn btn-xs btn-danger" ng-click="vm.remove(photo)">
+                                <button type="button" class="btn btn-xs btn-danger" ng-click="vm.remove(photo.Id)">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                             </div>

@@ -12,7 +12,8 @@ namespace SriLankanLifeVS.Models.EntityModels
         public int Id { get; set; }
         public string ImageName { get; set; }
         public bool Active { get; set; }
-        public DateTime AddedDate { get; set; }
+        public string AddedDate { get; set; }
+        public long Size { get; set; }
 
     }
 }

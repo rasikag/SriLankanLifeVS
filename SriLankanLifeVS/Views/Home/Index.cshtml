@@ -1,552 +1,640 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "";
 }
-<link href="~/Content/FullScreenSlider/demo.css" rel="stylesheet" />
-<link href="~/Content/FullScreenSlider/style.css" rel="stylesheet" />
-<link href="~/Content/FullScreenSlider/custom.css" rel="stylesheet" />
-<link href="~/Content/CustomScrollBar/jquery.mCustomScrollbar.css" rel="stylesheet" />
-<link href="~/Content/Hover/hover-style.css" rel="stylesheet" />
-@*<script src="~/Scripts/FullScreenSlider/modernizr.custom.79639.js"></script>*@
-
-<noscript>
-    <link href="~/Content/FullScreenSlider/styleNoJS.css" rel="stylesheet" />
-</noscript>
-
-<div class="container-full-screen-slider demo-2">
-
-    <div id="slider" class="sl-slider-wrapper">
-
-        <div class="sl-slider">
-
-
-            <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                <div class="sl-slide-inner">
-                    <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/1.jpg);"></div>
-                    <h2>A bene placito.</h2>
-                    <blockquote><p>You have just dined, and however scrupulously the slaughterhouse is concealed in the graceful distance of miles, there is complicity.</p><cite>Ralph Waldo Emerson</cite></blockquote>
+<!DOCTYPE html>
+<html ng-app="srilankanlife">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/FullScreenSlider/demo.css" rel="stylesheet" />
+    <link href="~/Content/FullScreenSlider/style.css" rel="stylesheet" />
+    <link href="~/Content/FullScreenSlider/custom.css" rel="stylesheet" />
+    <link href="~/Content/CustomScrollBar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/Content/Hover/hover-style.css" rel="stylesheet" />
+    <!--  added yeti theame -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    @*<noscript>
+        <link href="~/Content/FullScreenSlider/styleNoJS.css" rel="stylesheet" />
+    </noscript>*@
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="index.html">Sri Lankan <span>Life</span></a></h1>
                 </div>
-            </div>
-
-            <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-                <div class="sl-slide-inner">
-                    <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/2.jpg);"></div>
-                    <h2>Regula aurea.</h2>
-                    <blockquote><p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p><cite>Albert Schweitzer</cite></blockquote>
+                <div class="top-nav">
+                    <nav>
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                Menu
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="codes.html">Codes</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </nav>
                 </div>
-            </div>
-
-            <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-                <div class="sl-slide-inner">
-                    <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/3.jpg);"></div>
-                    <h2>Dum spiro, spero.</h2>
-                    <blockquote><p>Thousands of people who say they 'love' animals sit down once or twice a day to enjoy the flesh of creatures who have been utterly deprived of everything that could make their lives worth living and who endured the awful suffering and the terror of the abattoirs.</p><cite>Dame Jane Morris Goodall</cite></blockquote>
-                </div>
-            </div>
-
-            <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
-                <div class="sl-slide-inner">
-                    <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/4.jpg);"></div>
-                    <h2>Donna nobis pacem.</h2>
-                    <blockquote><p>The human body has no more need for cows' milk than it does for dogs' milk, horses' milk, or giraffes' milk.</p><cite>Michael Klaper M.D.</cite></blockquote>
-                </div>
-            </div>
-
-            <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
-                <div class="sl-slide-inner">
-                    <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/5.jpg);"></div>
-                    <h2>Acta Non Verba.</h2>
-                    <blockquote><p>I think if you want to eat more meat you should kill it yourself and eat it raw so that you are not blinded by the hypocrisy of having it processed for you.</p><cite>Margi Clarke</cite></blockquote>
-                </div>
-            </div>
-
-
-        </div>
-        <!-- /sl-slider -->
-
-        <nav id="nav-arrows" class="nav-arrows">
-            <span class="nav-arrow-prev">Previous</span>
-            <span class="nav-arrow-next">Next</span>
-        </nav>
-
-        @*<nav id="nav-dots" class="nav-dots">
-                <span class="nav-dot-current"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </nav>*@
-
-    </div><!-- /slider-wrapper -->
-</div>
-
-<div class="container">
-    <h1>Here 3 button div</h1>
-</div>
-
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 col-md-offset-4"><h1 class="center-block">DESTINATIONS</h1></div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <img src="~/Images/srilanka-travel-map.png" class="col-md-12" />
-        </div>
-        <div class="col-md-8">
-
-            <div class="myScrollBar mCustomScrollbar">
-                <!--Effect: Bottom to Top -->
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Colombo</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Ampara</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Anuradhapura</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Badulla</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Batticaloa</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Galle</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Gampaha</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Hambantota</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Jaffna</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kalutara</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kandy</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kegalle</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kilinochchi</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kurunegala</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Mannar</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Matale</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Matara</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Monaragala</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Mullaitivu</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Nuwara Eliya</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Polonnaruwa</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Puttalam</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Ratnapura</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Trincomalee</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Vavuniya</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
+    <div class="container-full-screen-slider demo-2">
 
-<div class="container">
-    <div class="row">
-        <h1>Keep some space in here</h1>
-    </div>
-</div>
+        <div id="slider" class="sl-slider-wrapper">
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 col-md-offset-4"><h1 class="center-block">EVENTS</h1></div>
+            <div class="sl-slider">
+
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/1.jpg);"></div>
+                        <h2>A bene placito.</h2>
+                        <blockquote><p>You have just dined, and however scrupulously the slaughterhouse is concealed in the graceful distance of miles, there is complicity.</p><cite>Ralph Waldo Emerson</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/2.jpg);"></div>
+                        <h2>Regula aurea.</h2>
+                        <blockquote><p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p><cite>Albert Schweitzer</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/3.jpg);"></div>
+                        <h2>Dum spiro, spero.</h2>
+                        <blockquote><p>Thousands of people who say they 'love' animals sit down once or twice a day to enjoy the flesh of creatures who have been utterly deprived of everything that could make their lives worth living and who endured the awful suffering and the terror of the abattoirs.</p><cite>Dame Jane Morris Goodall</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/4.jpg);"></div>
+                        <h2>Donna nobis pacem.</h2>
+                        <blockquote><p>The human body has no more need for cows' milk than it does for dogs' milk, horses' milk, or giraffes' milk.</p><cite>Michael Klaper M.D.</cite></blockquote>
+                    </div>
+                </div>
+
+                <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
+                    <div class="sl-slide-inner">
+                        <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/5.jpg);"></div>
+                        <h2>Acta Non Verba.</h2>
+                        <blockquote><p>I think if you want to eat more meat you should kill it yourself and eat it raw so that you are not blinded by the hypocrisy of having it processed for you.</p><cite>Margi Clarke</cite></blockquote>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /sl-slider -->
+
+            <nav id="nav-arrows" class="nav-arrows">
+                <span class="nav-arrow-prev">Previous</span>
+                <span class="nav-arrow-next">Next</span>
+            </nav>
+
+            @*<nav id="nav-dots" class="nav-dots">
+                    <span class="nav-dot-current"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </nav>*@
+
+        </div><!-- /slider-wrapper -->
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <img src="~/Images/srilanka-travel-map.png" class="col-md-12" />
+
+    <div class="container">
+        <h1>Here 3 button div</h1>
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-4"><h1 class="center-block">DESTINATIONS</h1></div>
         </div>
-        <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/Images/srilanka-travel-map.png" class="col-md-12" />
+            </div>
+            <div class="col-md-8">
 
-            <div class="myScrollBar mCustomScrollbar">
-                <!--Effect: Bottom to Top -->
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Colombo</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
+                <div class="myScrollBar mCustomScrollbar">
+                    <!--Effect: Bottom to Top -->
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Colombo</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Ampara</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Anuradhapura</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Badulla</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Batticaloa</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Galle</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Gampaha</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Hambantota</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Jaffna</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kalutara</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kandy</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kegalle</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kilinochchi</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kurunegala</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Mannar</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Matale</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Matara</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Monaragala</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Mullaitivu</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Nuwara Eliya</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Polonnaruwa</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Puttalam</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Ratnapura</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Trincomalee</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Vavuniya</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
                 </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Ampara</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Anuradhapura</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Badulla</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Batticaloa</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Galle</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Gampaha</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Hambantota</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Jaffna</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kalutara</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kandy</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kegalle</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kilinochchi</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Kurunegala</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Mannar</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Matale</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Matara</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Monaragala</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Mullaitivu</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Nuwara Eliya</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Polonnaruwa</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Puttalam</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Ratnapura</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Trincomalee</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
-                <div class="pic">
-                    <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
-                    <span class="pic-caption bottom-to-top">
-                        <h1 class="pic-title">Vavuniya</h1>
-                        <p>Hi, this is a simple example =D</p>
-                    </span>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <h1>Keep some space in here</h1>
+    <div class="container">
+        <div class="row">
+            <h1>Keep some space in here</h1>
+        </div>
     </div>
-</div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-4"><h1 class="center-block">EVENTS</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/Images/srilanka-travel-map.png" class="col-md-12" />
+            </div>
+            <div class="col-md-8">
 
+                <div class="myScrollBar mCustomScrollbar">
+                    <!--Effect: Bottom to Top -->
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Colombo</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
 
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Ampara</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
 
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Anuradhapura</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
 
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Badulla</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
 
-<script src="~/Scripts/jquery-2.2.0.js"></script>
-<script src="~/Scripts/FullScreenSlider/jquery.ba-cond.min.js"></script>
-<script src="~/Scripts/FullScreenSlider/jquery.slitslider.js"></script>
-<script src="~/Scripts/AngularJS/angular.js"></script>
-<script src="~/Scripts/AngularJS/app.js"></script>
-<script src="~/Scripts/AngularJS/FullScreenSlider/Controller/SliderImageController.js"></script>
-<script src="~/Scripts/AngularJS/FullScreenSlider/Service/SliderImages.js"></script>
-<script src="~/Scripts/CustomScrollBar/jquery.mCustomScrollbar.min.js"></script>
-<script src="~/Scripts/CustomScrollBar/jquery.mousewheel.min.js"></script>
-<script type="text/javascript">
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Batticaloa</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Galle</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Gampaha</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Hambantota</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Jaffna</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kalutara</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kandy</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kegalle</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kilinochchi</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Kurunegala</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Mannar</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Matale</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Matara</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Monaragala</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Mullaitivu</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Nuwara Eliya</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Polonnaruwa</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Puttalam</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Ratnapura</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Trincomalee</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                    <div class="pic">
+                        <img src="~/Images/Hover/01.jpg" class="pic-image" alt="Pic" />
+                        <span class="pic-caption bottom-to-top">
+                            <h1 class="pic-title">Vavuniya</h1>
+                            <p>Hi, this is a simple example =D</p>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1>Keep some space in here</h1>
+        </div>
+    </div>
+
+    <div class="footer">
+        <!-- container -->
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <h3>Details</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="codes.html">Codes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>756 gt globel Place,</li>
+                        <li>CD-Road,M 07 435.</li>
+                        <li>Telephone: +1 234 567 9871</li>
+                        <li>FAX: +1 234 567 9871</li>
+                        <li>Email : <a href="mailto:example@email.com">Example@mail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Google +</a></li>
+                        <li><a href="#">Rss</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Newsletter</h3>
+                    <form>
+                        <input type="text" placeholder="Email address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <!-- //footer -->
+    <!-- footer-bottom -->
+    <div class="footer-bottom">
+        <!-- container -->
+        <div class="container">
+            <p> © 2015 Red Wine . All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+        <!-- //container -->
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/FullScreenSlider/jquery.ba-cond.min.js"></script>
+    <script src="~/Scripts/FullScreenSlider/jquery.slitslider.js"></script>
+    <script src="~/Scripts/CustomScrollBar/jquery.mCustomScrollbar.min.js"></script>
+    <script src="~/Scripts/CustomScrollBar/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript">
 
     $(function () {
 
@@ -580,4 +668,14 @@
         Page.init();
 
     });
-</script>
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
