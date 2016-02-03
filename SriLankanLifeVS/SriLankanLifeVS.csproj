@@ -182,9 +182,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainSliderManageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Extensions\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,7 +205,23 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EntityModels\District.cs" />
+    <Compile Include="Models\EntityModels\Event.cs" />
+    <Compile Include="Models\EntityModels\EventCategory.cs" />
+    <Compile Include="Models\EntityModels\EventCommentUser.cs" />
+    <Compile Include="Models\EntityModels\EventImageAdmin.cs" />
+    <Compile Include="Models\EntityModels\EventImageUser.cs" />
+    <Compile Include="Models\EntityModels\EventVideoAdmin.cs" />
+    <Compile Include="Models\EntityModels\EventVideoUser.cs" />
+    <Compile Include="Models\EntityModels\Place.cs" />
+    <Compile Include="Models\EntityModels\PlaceCategory.cs" />
+    <Compile Include="Models\EntityModels\PlaceCommentUser.cs" />
+    <Compile Include="Models\EntityModels\PlaceImageAdmin.cs" />
+    <Compile Include="Models\EntityModels\PlaceImageUser.cs" />
+    <Compile Include="Models\EntityModels\PlaceVideoAdmin.cs" />
+    <Compile Include="Models\EntityModels\PlaceVideoUser.cs" />
     <Compile Include="Models\EntityModels\SliderImage.cs" />
+    <Compile Include="Models\EntityModels\Town.cs" />
     <Compile Include="Models\FileData.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -240,6 +258,7 @@
     <Content Include="Images\FullScreenSlider\5.jpg" />
     <Content Include="Images\Hover\01.jpg" />
     <Content Include="Images\srilanka-travel-map.png" />
+    <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Service\fileService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Controller\ImageUploadController.js" />
     <Content Include="Scripts\AngularJS\angular-route.js" />
@@ -321,6 +340,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\FullScreenSlider\fonts\" />
     <Folder Include="Images\Places\" />
+    <Folder Include="Views\Event\" />
+    <Folder Include="Views\Place\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

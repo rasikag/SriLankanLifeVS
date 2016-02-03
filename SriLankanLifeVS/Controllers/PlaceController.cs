@@ -6,20 +6,13 @@ using System.Web.Mvc;
 
 namespace SriLankanLifeVS.Controllers
 {
-    public class AdminController : Controller
+    public class PlaceController : Controller
     {
-        // GET: Admin
-        // This will work as admin dashboard 
+        // GET: Place
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult SliderImageManage()
-        {
-            return View();
-        }
-
 
     }
 }

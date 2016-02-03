@@ -20,48 +20,18 @@ namespace SriLankanLifeVS.Controllers
         private readonly string workingFolder = HttpRuntime.AppDomainAppPath + @"\Images\FullScreenSlider";
         private TravelContext _dbContext = new TravelContext();
 
-        /// <summary>
-        ///   Get all photos
-        /// </summary>
-        /// <returns></returns>
+
         public IHttpActionResult Get()
         {
-            //var photos = new List<SliderImageViewModel>();
-
-            //var photoFolder = new DirectoryInfo(workingFolder);
-
-            //await Task.Factory.StartNew(() =>
-            //{
-            //    photos = photoFolder.EnumerateFiles()
-            //      .Where(fi => new[] { ".jpg", ".bmp", ".png", ".gif", ".tiff" }
-            //        .Contains(fi.Extension.ToLower()))
-            //      .Select(fi => new SliderImageViewModel
-            //      {
-            //          Name = fi.Name,
-            //          Size = fi.Length / 1024
-            //      })
-            //      .ToList();
-            //});
-
             List<SliderImage> si = _dbContext.SliderImages.ToList();
 
             return Ok(new { Photos = si });
 
-            //_dbContext.SliderImages.ToList();
-
-
-
-
-
         }
 
-        /// <summary>
-        ///   Delete photo
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<IHttpActionResult> Delete([FromBody]string fileName)
+
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(string fileName, int Id)
         {
             if (!FileExists(fileName))
             {
@@ -84,6 +54,13 @@ namespace SriLankanLifeVS.Controllers
                     Successful = true,
                     Message = fileName + "deleted successfully"
                 };
+                var image = _dbContext.SliderImages.SingleOrDefault(x => x.Id == Id);
+                if (image != null)
+                {
+                    _dbContext.SliderImages.Remove(image);
+                    _dbContext.SaveChanges();
+                }
+
                 return Ok(new { message = result.Message });
             }
             catch (Exception ex)
@@ -97,10 +74,8 @@ namespace SriLankanLifeVS.Controllers
             }
         }
 
-        /// <summary>
-        ///   Add a photo
-        /// </summary>
-        /// <returns></returns>
+
+
         [HttpPost]
         [Route("api/add-image-to-main-slider")]
         public async Task<IHttpActionResult> Post()
@@ -139,12 +114,13 @@ namespace SriLankanLifeVS.Controllers
 
                 string newName = Guid.NewGuid().ToString();
 
-                try {
+                try
+                {
                     if (File.Exists(workingFolder + "/" + fileName))
                     {
                         File.Move(workingFolder + "/" + fileName, workingFolder + "/" + newName + fileExtension);
                         SliderImage sliderImage = new SliderImage();
-                        sliderImage.ImageName = newName+fileExtension;
+                        sliderImage.ImageName = newName + fileExtension;
                         sliderImage.Active = false;
                         sliderImage.AddedDate = DateTime.Today.ToString("d");
                         sliderImage.Size = (long)fileSize / 1024;
@@ -165,15 +141,38 @@ namespace SriLankanLifeVS.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.GetBaseException().Message);
-                
+
             }
         }
 
-        /// <summary>
-        ///   Check if file exists on disk
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
+        [HttpPost]
+        [Route("api/changeactiveimage")]
+        public async Task<IHttpActionResult> ChangeActiveImage(Test test)
+        {
+            try
+            {
+                var image = _dbContext.SliderImages.SingleOrDefault(x => x.Id == test.Id);
+                if (image != null)
+                {
+                    image.Active = test.Active;
+                    await _dbContext.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+
+
+
+        }
+
+
         public bool FileExists(string fileName)
         {
             var file = Directory.GetFiles(workingFolder, fileName)
@@ -182,5 +181,12 @@ namespace SriLankanLifeVS.Controllers
             return file != null;
         }
 
+    }
+
+
+    public class Test
+    {
+        public int Id { get; set; }
+        public bool Active { get; set; }
     }
 }

@@ -20,10 +20,10 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-11 col-xs-10">Name</div>
                             <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Size (kb)</div>
-                            @*<div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Created on</div>
-                            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Modified on</div>*@
+                            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Added Date</div>
+                            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Active</div>
                             <div class="col-lg-2 col-md-2">Preview</div>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2"></div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">Remove</div>
                         </div>
                     </li>
                     <li class="list-group-item" ng-show="vm.photos.length === 0">no photos</li>
@@ -31,13 +31,15 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-11 col-xs-10 wraptext">{{photo.ImageName}}</div>
                             <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Size}}</div>
-                            @*<div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Created | date: short}}</div>
-                            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Modified | date: short}}</div>*@
+                            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.AddedDate | date: short}}</div>
+                            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+                                <input type="checkbox" ng-model="photo.Active" ng-change="vm.changeActiveImage(photo)" />
+                            </div>
                             <div class="col-lg-2 col-md-2">
                                 <img ng-src="/Images/FullScreenSlider/{{photo.ImageName}}" style="max-height: 250px" class="img-responsive" />
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
-                                <button type="button" class="btn btn-xs btn-danger" ng-click="vm.remove(photo.Id)">
+                                <button type="button" class="btn btn-xs btn-danger" ng-click="vm.remove(photo)">
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                             </div>
@@ -72,7 +74,7 @@
 <script src="~/Scripts/AngularJS/angular.js"></script>
 <script src="~/Scripts/AngularJS/angular-route.js"></script>
 <script src="~/Scripts/AngularJS/ng-file-upload.js"></script>
-<script src="~/Scripts/AngularJS/app.js"></script>
+<script src="~/Scripts/AngularJS/Admin/FullScreenSliderManage/app.js"></script>
 <script src="~/Scripts/AngularJS/Admin/FullScreenSliderManage/Controller/ImageUploadController.js"></script>
 <script src="~/Scripts/AngularJS/Admin/FullScreenSliderManage/Service/fileService.js"></script>
 <script src="~/Scripts/jquery-2.2.0.js"></script>

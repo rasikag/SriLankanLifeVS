@@ -3,7 +3,7 @@
     "use strict";
 
     srilankanlife.controller("imageUploadController", ["$window",
-        "fileService", "Upload", "apiUrl", function ($window, fileService, Upload, apiUrl) {
+        "fileService", "Upload", "apiUrl","$http", function ($window, fileService, Upload, apiUrl ,$http) {
 
             var vm = this;
 
@@ -51,13 +51,46 @@
                 //$window.location.reload();
             }
 
-            function removePhoto(Id) {
-                fileService.deletePhoto(Id)
+            function removePhoto(photo) {
+                fileService.deletePhoto(photo.ImageName, photo.Id)
                   .then(function () {
                       activate();
 
                       setPreviewPhoto();
+                  }, function () {
+                      activate();
                   });
+            }
+
+            function changeActiveImage(photo) {
+
+                //fileService.changeActiveImage(photo.Id, photo.Active);
+                //.then(function () {
+                //    activate();
+
+                //    setPreviewPhoto();
+                //}, function () {
+                //    activate();
+                //});
+                //?Id=' + photo.Id+'&'+'Active='+photo.Active
+                $http({
+                    url: 'http://localhost:58115/api/changeactiveimage',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: {
+                        Id: photo.Id,
+                        Active: photo.Active
+                    }
+                }).then(function () {
+                    activate();
+                    setPreviewPhoto();
+                }, function () {
+                    activate();
+                    setPreviewPhoto();
+                });
+
             }
 
             //Set scope 
@@ -65,6 +98,7 @@
             vm.uploadFiles = uploadFiles;
             vm.remove = removePhoto;
             vm.setPreviewPhoto = setPreviewPhoto;
+            vm.changeActiveImage = changeActiveImage;
         }
     ]);
 })();

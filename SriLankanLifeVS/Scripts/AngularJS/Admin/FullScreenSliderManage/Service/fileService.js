@@ -13,7 +13,7 @@
 
                 $http.get(apiUrl)
                   .success(function (result) {
-                      console.log(result);
+                      //console.log(result);
                       deferred.resolve(result);
                   })
                   .error(function (error) {
@@ -40,11 +40,11 @@
             }
 
             // Delete photo on the server with given file name      
-            function deletePhoto(Id) {
-                console.log(Id);
+            function deletePhoto(fileName , Id) {
+
                 var deferred = $q.defer();
 
-                $http.delete(apiUrl, { params: { fileName: fileName } })
+                $http.delete(apiUrl, { params: { fileName: fileName , Id : Id  } })
                   .success(function (result) {
                       deferred.resolve(result);
                   }).error(function (error) {
@@ -54,10 +54,27 @@
                 return deferred.promise;
             }
 
+            function changeActiveImage(Id, Active) {
+
+                //var deferred = $q.defer();
+
+                $http.post("http://localhost:58115/api/change-active-image", { params: { Id: Id, Active: Active } })
+                  .success(function (result) {
+                      console.log(result);
+                      //deferred.resolve(result);
+                  }).error(function (error) {
+                      console.log(error);
+                      //deferred.reject(error);
+                  });
+
+                //return deferred.promise;
+            }
+
             return {
                 getAll: getAll,
                 getPhoto: getPhoto,
-                deletePhoto: deletePhoto
+                deletePhoto: deletePhoto,
+                changeActiveImage: changeActiveImage
             };
         }
     ]);
