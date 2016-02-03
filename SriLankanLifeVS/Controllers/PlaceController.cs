@@ -14,5 +14,10 @@ namespace SriLankanLifeVS.Controllers
             return View();
         }
 
+        public ActionResult AddCommentByUser()
+        {
+            return View();
+        }
+
     }
 }

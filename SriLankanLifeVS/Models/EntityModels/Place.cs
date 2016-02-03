@@ -23,7 +23,7 @@ namespace SriLankanLifeVS.Models.EntityModels
         
         public ICollection<PlaceCategory> PlaceCategories { get; set; }
 
-        public virtual List<PlaceImageUser> ImageUsers { get; set; }
+        public virtual ICollection<PlaceImageUser> ImageUsers { get; set; }
         public virtual List<PlaceImageAdmin> ImageAdmin { get; set; }
         public virtual List<PlaceCommentUser> CommentUser { get; set; }
         public virtual List<PlaceVideoUser> VideoUser { get; set; }

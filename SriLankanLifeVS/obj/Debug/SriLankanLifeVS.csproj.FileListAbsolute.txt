@@ -77,3 +77,4 @@ D:\CSSDev\SriLankanLifeVS\SriLankanLifeVS\obj\Debug\SriLankanLifeVS.Migrations.i
 D:\CSSDev\SriLankanLifeVS\SriLankanLifeVS\obj\Debug\SriLankanLifeVS.csproj.GenerateResource.Cache
 D:\CSSDev\SriLankanLifeVS\SriLankanLifeVS\obj\Debug\SriLankanLifeVS.Migrations.changesliderimagedatamodel.resources
 D:\CSSDev\SriLankanLifeVS\SriLankanLifeVS\obj\Debug\SriLankanLifeVS.Migrations.changedatetimeobjecttostring.resources
+D:\CSSDev\SriLankanLifeVS\SriLankanLifeVS\obj\Debug\SriLankanLifeVS.Migrations.updatemodel.resources

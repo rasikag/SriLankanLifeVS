@@ -17,8 +17,10 @@ namespace SriLankanLifeVS.Models.EntityModels
         public string Email { get; set; }
         public string UserName { get; set; }
 
-        [ForeignKey("Palce")]
+        
         public Guid PlaceId { get; set; }
+
+        [ForeignKey("PlaceId")]
         public virtual Place Place { get; set; }
     }
 }

@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201602020600128_change-datetime-object-to-string.Designer.cs">
       <DependentUpon>201602020600128_change-datetime-object-to-string.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602031026123_update-model.cs" />
+    <Compile Include="Migrations\201602031026123_update-model.Designer.cs">
+      <DependentUpon>201602031026123_update-model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EntityModels\District.cs" />
@@ -335,13 +339,13 @@
     <Content Include="Views\Home\Place.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\SliderImageManage.cshtml" />
+    <Content Include="Views\Place\AddCommentByUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\FullScreenSlider\fonts\" />
     <Folder Include="Images\Places\" />
     <Folder Include="Views\Event\" />
-    <Folder Include="Views\Place\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602020600128_change-datetime-object-to-string.resx">
       <DependentUpon>201602020600128_change-datetime-object-to-string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602031026123_update-model.resx">
+      <DependentUpon>201602031026123_update-model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
