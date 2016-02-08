@@ -49,6 +49,46 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.CoreUtility.14.1.24720\lib\net45\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Editor, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Editor.14.1.24720\lib\net45\Microsoft.VisualStudio.Editor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6070\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.7.10.6071\lib\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Data, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.Data.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.Logic.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.UI.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Text.UI.Wpf.14.1.24720\lib\net45\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.7.10.6070\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.8.0.8.0.50727\lib\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -182,12 +222,18 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CommentManageController.cs" />
+    <Compile Include="Controllers\DistrictManageController.cs" />
+    <Compile Include="Controllers\EventCommentManageController.cs" />
+    <Compile Include="Controllers\EventImageManageController.cs" />
+    <Compile Include="Controllers\EventVideoManageController.cs" />
+    <Compile Include="Controllers\PlaceCommentManageController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainSliderManageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
+    <Compile Include="Controllers\PlaceImageManageController.cs" />
+    <Compile Include="Controllers\PlaceVideoManageController.cs" />
     <Compile Include="Extensions\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +253,10 @@
     <Compile Include="Migrations\201602031026123_update-model.cs" />
     <Compile Include="Migrations\201602031026123_update-model.Designer.cs">
       <DependentUpon>201602031026123_update-model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602040429076_change-in-place-video-user.cs" />
+    <Compile Include="Migrations\201602040429076_change-in-place-video-user.Designer.cs">
+      <DependentUpon>201602040429076_change-in-place-video-user.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -265,6 +315,22 @@
     <Content Include="Scripts\AngularJS\AddCommentByUser\app.js" />
     <Content Include="Scripts\AngularJS\AddCommentByUser\Controller\CommentManageController.js" />
     <Content Include="Scripts\AngularJS\AddCommentByUser\Service\CommentDataService.js" />
+    <Content Include="Scripts\AngularJS\AddCommetByUserEvent\app.js" />
+    <Content Include="Scripts\AngularJS\AddCommetByUserEvent\Controller\CommentManageController.js" />
+    <Content Include="Scripts\AngularJS\AddCommetByUserEvent\Service\CommentDataService.js" />
+    <Content Include="Scripts\AngularJS\AddImagesByUserEvent\app.js" />
+    <Content Include="Scripts\AngularJS\AddImagesByUserEvent\Controller\ImageManageController.js" />
+    <Content Include="Scripts\AngularJS\AddImagesByUserPlace\app.js" />
+    <Content Include="Scripts\AngularJS\AddImagesByUserPlace\Controller\ImageManageController.js" />
+    <Content Include="Scripts\AngularJS\AddVideoByUserEvent\app.js" />
+    <Content Include="Scripts\AngularJS\AddVideoByUserEvent\Controller\CommentManageController.js" />
+    <Content Include="Scripts\AngularJS\AddVideoByUserEvent\Service\CommentDataService.js" />
+    <Content Include="Scripts\AngularJS\AddVideoByUserPlace\app.js" />
+    <Content Include="Scripts\AngularJS\AddVideoByUserPlace\Controller\CommentManageController.js" />
+    <Content Include="Scripts\AngularJS\AddVideoByUserPlace\Service\CommentDataService.js" />
+    <Content Include="Scripts\AngularJS\Admin\DistrictManage\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\DistrictManage\Controller\DistictManageController.js" />
+    <Content Include="Scripts\AngularJS\Admin\DistrictManage\Service\DistrictManageService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Service\fileService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Controller\ImageUploadController.js" />
@@ -304,6 +370,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -317,7 +384,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -343,12 +409,21 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\SliderImageManage.cshtml" />
     <Content Include="Views\Place\AddCommentByUser.cshtml" />
+    <Content Include="Views\Event\AddCommentByUser.cshtml" />
+    <Content Include="Views\Place\AddVideoByUserPalce.cshtml" />
+    <Content Include="Views\Event\AddVideoByUserEvent.cshtml" />
+    <Content Include="Views\Place\AddImagesByUserPlace.cshtml" />
+    <Content Include="Views\Event\AddImageByUserEvent.cshtml" />
+    <Content Include="Views\Admin\DistrictManage.cshtml" />
+    <Content Include="Views\Place\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\FullScreenSlider\fonts\" />
+    <Folder Include="Content\Sections\" />
     <Folder Include="Images\Places\" />
-    <Folder Include="Views\Event\" />
+    <Folder Include="Images\UserUploadedEvents\" />
+    <Folder Include="Images\UserUploadedPlaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -369,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602031026123_update-model.resx">
       <DependentUpon>201602031026123_update-model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602040429076_change-in-place-video-user.resx">
+      <DependentUpon>201602040429076_change-in-place-video-user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

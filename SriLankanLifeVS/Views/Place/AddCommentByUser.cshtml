@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    
+
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
@@ -51,17 +51,21 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row">
+            <h3>Add Comment to Place</h3>
+        </div>
+    </div>
     <div>
         <div ng-controller="AddCommentController">
             <form name="commentForm">
-
                 <div class="container">
                     <div class="row">
                         <div class="form-group">
                             <label for="name">Name :</label>
                             <input type="text" class="form-control" id="Name" name="Name" ng-model="comment.Name" placeholder="Name" required>
                         </div>
+
                         <div class="form-group">
                             <label for="email">Email :</label>
                             <input type="email" class="form-control" id="Email" name="Email" ng-model="comment.Email" placeholder="Email" required>
@@ -76,9 +80,12 @@
                     </div>
                 </div>
             </form>
-
-            <div ng-show="commnetSubmit">
+            <div ng-show="commnetSubmitSuccess">
                 <p>Comment successfullly submited for the review</p>
+            </div>
+
+            <div ng-show="commnetSubmitFail">
+                <p>Comment submited fail.Please retry</p>
             </div>
         </div>
     </div>
@@ -144,6 +151,9 @@
     <script src="~/Scripts/jquery-2.2.0.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/AngularJS/angular.js"></script>
+    <script src="~/Scripts/AngularJS/AddCommentByUser/app.js"></script>
+    <script src="~/Scripts/AngularJS/AddCommentByUser/Controller/CommentManageController.js"></script>
+    <script src="~/Scripts/AngularJS/AddCommentByUser/Service/CommentDataService.js"></script>
 </body>
 </html>
 

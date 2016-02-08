@@ -14,6 +14,9 @@ namespace SriLankanLifeVS.Models.EntityModels
         public bool Active { get; set; }
         public DateTime AddedDate { get; set; }
 
+        public string UserName { get; set; }
+        public string Email { get; set; }
+
         [ForeignKey("Place")]
         public Guid PlaceId { get; set; }
         public virtual Place Place { get; set; }

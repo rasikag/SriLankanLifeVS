@@ -13,5 +13,27 @@ namespace SriLankanLifeVS.Controllers
         {
             return View();
         }
+
+        public ActionResult AddCommentByUser()
+        {
+            return View();
+        }
+
+        public ActionResult AddVideoByUserEvent()
+        {
+            return View();
+        }
+
+        public ActionResult AddImageByUserEvent()
+        {
+            return View();
+        }
+
+        public ActionResult EventInDetails()
+        {
+            return View();
+        }
+
+
     }
 }

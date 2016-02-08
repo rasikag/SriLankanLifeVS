@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html ng-app="srilankanlife">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/FullScreenSlider/demo.css" rel="stylesheet" />
+    <link href="~/Content/FullScreenSlider/style.css" rel="stylesheet" />
+    <link href="~/Content/FullScreenSlider/custom.css" rel="stylesheet" />
+    <link href="~/Content/CustomScrollBar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/Content/Hover/hover-style.css" rel="stylesheet" />
+    <!--  added yeti theame -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <style>
+        .Destination-Items {
+            opacity: 0.6;
+            background: black;
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            margin: 10px;
+            padding-top: 0.5em;
+            min-height: 2.5em;
+            border-radius: 10px;
+        }
+
+            .Destination-Items :hover {
+                color: #ff6a00;
+                font-weight: bold;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="index.html">Traval <span>Sri Lanka</span></a></h1>
+                </div>
+                <div class="top-nav">
+                    <nav>
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                Menu
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="#Destination">Destination</a></li>
+                                <li><a href="#Events">Events</a></li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="footer">
+        <!-- container -->
+        <div class="container" style="font">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <h3>Details</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#Destination">Destination</a></li>
+                        <li><a href="#Events">Events</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Colombo Software (Pvt) Ltd.</li>
+                        @*<li>CD-Road,M 07 435.</li>
+                            <li>Telephone: +1 234 567 9871</li>
+                            <li>FAX: +1 234 567 9871</li>*@
+                        <li>Email : <a href="mailto:info@colombo.solution">info@colombo.solution</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Google +</a></li>
+                        <li><a href="#">Rss</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Newsletter</h3>
+                    <form>
+                        <input type="text" placeholder="Email address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <div class="footer-bottom">
+        <!-- container -->
+        <div class="container">
+            <p> © @DateTime.Now.Year Traval Sri Lanka. All rights reserved | Design by <a href="http://colombo.solutionsfg/">Colombo Solutions</a></p>
+        </div>
+        <!-- //container -->
+    </div>
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/FullScreenSlider/jquery.ba-cond.min.js"></script>
+    <script src="~/Scripts/FullScreenSlider/jquery.slitslider.js"></script>
+    <script src="~/Scripts/CustomScrollBar/jquery.mCustomScrollbar.min.js"></script>
+    <script src="~/Scripts/CustomScrollBar/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $(".myScrollBar").mCustomScrollbar({
+                theme: "dark-3",
+                setHeight: 500
+
+            });
+
+            var Page = (function () {
+                var $navArrows = $('#nav-arrows'),
+                    slitslider = $('#slider').slitslider({
+                        autoplay: true,
+                        interval: 4000,
+                    }),
+                    init = function () { initEvents(); }, initEvents = function () {
+                        $navArrows.children(':last').on('click', function () {
+                            slitslider.next();
+                            return false;
+                        });
+                        $navArrows.children(':first').on('click', function () {
+                            slitslider.previous();
+                            return false;
+                        });
+                    };
+
+                return { init: init };
+
+            })();
+
+            Page.init();
+
+        });
+    </script>
+
+</body>
+</html>
+

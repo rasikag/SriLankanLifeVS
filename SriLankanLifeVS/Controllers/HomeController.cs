@@ -10,6 +10,18 @@ namespace SriLankanLifeVS.Controllers
     {
         public ActionResult Index()
         {
+
+            List<string> districts = new List<string> {"Ampara","Anuradapura","Badulla","Baticaloa","Colombo","Galle","Gampaha",
+                                                        "Hambantota","Jaffna","Kalutara","Kandy","Kegalle","Kilinochchi","Kurunegala",
+                                                        "Mannar","Matale","Matara","Monaragala","Mullaitivu","Nuwara Eliya",
+                                                        "Polonnaruwa","Puttalam","Ratnapura","Trincomalee","Vavunia"};
+            List<string> events = new List<string> {"Wild Safari","Camping","Rafting","Whale Watching","Bird Watching","Waterfalls","Hiking",
+                                                        "Diving","Perahera","Cricket Matches","Cultural Festival","National Festivals","Sport Festivals","Religious Festival",
+                                                        "Adventures Events","Entertainment Events","Nature Trails","Motor Cross","Educational Festivals","Volunteering",
+                                                        "Surfing","Meditation","Ayurvedic Treatments","Conferences" };
+
+            ViewBag.Events = events;
+            ViewBag.Districts = districts;
             return View();
         }
 

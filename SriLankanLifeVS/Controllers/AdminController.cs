@@ -21,6 +21,13 @@ namespace SriLankanLifeVS.Controllers
         }
 
 
+        // add or remove district 
+
+        public ActionResult DistrictManage()
+        {
+            return View();
+        }
+
 
 
     }
