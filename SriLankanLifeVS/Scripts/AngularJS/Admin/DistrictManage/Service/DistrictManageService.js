@@ -17,6 +17,23 @@ srilankanlife.factory('districtData', function ($http) {
                     method: 'GET',
                     url: 'http://localhost:58115/api/get-all-district'
                 });
+        },
+
+        editDistrict: function (dist) {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:58115/api/edit-district',
+                data: dist
+            });
+        },
+        deleteDistrict: function (dist) {
+
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:58115/api/delete-district',
+                data: dist
+            });
+
         }
     }
 });

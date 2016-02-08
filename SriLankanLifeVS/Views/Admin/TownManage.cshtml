@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "DistrictManage";
+    ViewBag.Title = "TownManage";
     Layout = "";
 }
-
 
 <!DOCTYPE html>
 <html ng-app="srilankanlife">
@@ -53,45 +52,49 @@
     </div>
     </br>
     </br>
-    <div class="container" ng-controller="districtController">
+    <div class="container" ng-controller="townController">
 
         <div class="row">
             <div class="col-md-12">
                 <form name="districtForm">
-                    <div class="col-md-3 form-group"> District Name : </div>
-                    <div class="col-md-5">
-                        <input type="text" ng-model="district.DistrictName" class="form-control" ng-required="required"/>
+                    <div class="row">
+                        <div class="col-md-3 form-group"> Town Name : </div>
+                        <div class="col-md-5">
+                            <input type="text" ng-model="district.DistrictName" class="form-control" ng-required="required" />
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-success" ng-click="addDistrict(district , districtForm)">Add</button>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-danger" ng-click="clearForm()">Clear</button>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button class="btn btn-success" ng-click="addDistrict(district , districtForm)">Add</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-danger" ng-click="clearForm()">Clear</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
         </br>
-        <div class="row">
+        @*<div class="row">
             <div ng-show="districtStatusTrue">
                 <h3>Successfully added to DataBase</h3>
             </div>
             <div ng-show="districtStatusFalse">
                 <h3>There is a error. Plese try again</h3>
             </div>
-        </div>
+        </div>*@
         </br>
 
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-3 col-md-offset-3"><h3>District List</h3></div>
-        </div>
+        </div>*@
         </br>
 
-        <div class="row" ng-repeat="dist in allDistrict">
+        @*<div class="row" ng-repeat="dist in allDistrict">
             <div>
                 <div class="col-md-3">
                     <h4 id="{{dist.TextId}}">{{dist.DistrictName}}</h4>
-                    <input type="text" id="{{dist.InputId}}" class="form-control ng-hide" ng-model="dist.DistrictName"/>
+                    <input type="text" id="{{dist.InputId}}" class="form-control ng-hide" ng-model="dist.DistrictName" />
                 </div>
                 <div class="col-md-3">
                     <button id="{{dist.EditButtonId}}" class="btn btn-success" ng-click="editDistrict(dist)">Edit</button>
@@ -101,7 +104,7 @@
                     <button class="btn btn-danger" ng-click="deleteDistrict(dist)">Delete</button>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     </div>
     </br>
@@ -165,9 +168,12 @@
     <script src="~/Scripts/jquery-2.2.0.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/AngularJS/angular.js"></script>
-    <script src="~/Scripts/AngularJS/Admin/DistrictManage/app.js"></script>
-    <script src="~/Scripts/AngularJS/Admin/DistrictManage/Controller/DistictManageController.js"></script>
-    <script src="~/Scripts/AngularJS/Admin/DistrictManage/Service/DistrictManageService.js"></script>
+    <script src="~/Scripts/AngularJS/angular-animate.min.js"></script>
+    <script src="~/Scripts/AngularJS/ui-bootstrap-tpls-1.1.2.min.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/TownManage/app.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/TownManage/Controller/TownManageContoller.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/TownManage/Service/TownManageService.js"></script>
 </body>
 </html>
+
 

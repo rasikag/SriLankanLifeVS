@@ -29,6 +29,12 @@ namespace SriLankanLifeVS.Controllers
         }
 
 
+        //add or remove town 
+
+        public ActionResult TownManage()
+        {
+            return View();
+        }
 
     }
 }

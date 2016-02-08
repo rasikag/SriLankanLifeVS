@@ -46,6 +46,74 @@ namespace SriLankanLifeVS.Controllers
         }
 
 
+        [HttpPost]
+        [Route("api/edit-district")]
+        public async Task<IHttpActionResult> EditDistrict(DistrictEdit dist)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    District district = _db.Districts.SingleOrDefault(x => x.Id == dist.Id);
+                    if(district != null)
+                    {
+                        district.DistrictName = dist.DistrictName;
+                        await _db.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest("Cann't find distict");
+                    }
+                    
+                }
+                catch (Exception e)
+                {
+                    return BadRequest("District name could not chage. Please try again");
+                }
+            }
+            else
+            {
+                return BadRequest("Model is not valid");
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/delete-district")]
+        public async Task<IHttpActionResult> DeleteDistrict(DistrictEdit dist)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    District district = _db.Districts.SingleOrDefault(x => x.Id == dist.Id);
+                    if (district != null)
+                    {
+                        //district.DistrictName = dist.DistrictName;
+                        _db.Districts.Remove(district);
+                        await _db.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest("Cann't find distict");
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    return BadRequest("District name could not chage. Please try again");
+                }
+            }
+            else
+            {
+                return BadRequest("Model is not valid");
+            }
+
+        }
+
+
     }
 
     // view models 
@@ -54,6 +122,15 @@ namespace SriLankanLifeVS.Controllers
     {
         [Required]
         public string DistrictName { get; set; }
+    }
+
+    public class DistrictEdit
+    {
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        public string DistrictName { get; set; }
+
     }
 
 }

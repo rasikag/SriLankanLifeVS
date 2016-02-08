@@ -234,6 +234,7 @@
     <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Controllers\PlaceImageManageController.cs" />
     <Compile Include="Controllers\PlaceVideoManageController.cs" />
+    <Compile Include="Controllers\TownManageController.cs" />
     <Compile Include="Extensions\CustomMultipartFormDataStreamProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -334,6 +335,11 @@
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Service\fileService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Controller\ImageUploadController.js" />
+    <Content Include="Scripts\AngularJS\Admin\TownManage\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\TownManage\Controller\TownManageContoller.js" />
+    <Content Include="Scripts\AngularJS\Admin\TownManage\Service\TownManageService.js" />
+    <Content Include="Scripts\AngularJS\angular-animate.js" />
+    <Content Include="Scripts\AngularJS\angular-animate.min.js" />
     <Content Include="Scripts\AngularJS\angular-route.js" />
     <Content Include="Scripts\AngularJS\angular-route.min.js" />
     <Content Include="Scripts\AngularJS\angular.js" />
@@ -344,6 +350,7 @@
     <Content Include="Scripts\AngularJS\MetroJS\GridController.js" />
     <Content Include="Scripts\AngularJS\ng-file-upload.js" />
     <Content Include="Scripts\AngularJS\ng-file-upload.min.js" />
+    <Content Include="Scripts\AngularJS\ui-bootstrap-tpls-1.1.2.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -416,6 +423,7 @@
     <Content Include="Views\Event\AddImageByUserEvent.cshtml" />
     <Content Include="Views\Admin\DistrictManage.cshtml" />
     <Content Include="Views\Place\Index.cshtml" />
+    <Content Include="Views\Admin\TownManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
