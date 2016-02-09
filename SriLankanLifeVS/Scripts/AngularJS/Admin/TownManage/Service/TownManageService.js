@@ -14,6 +14,7 @@ srilankanlife.factory('dataTown', function ($http) {
             });
 
         },
+
         addTown: function (town) {
             return $http({
                 url: 'http://localhost:58115/api/add-town',
@@ -21,10 +22,27 @@ srilankanlife.factory('dataTown', function ($http) {
                 data: town
             });
         },
+
         getAllTown: function () {
             return $http({
                 url: 'http://localhost:58115/api/get-all',
                 method : 'GET'
+            });
+        },
+
+        editTown: function (obj) {
+            return $http({
+                url: 'http://localhost:58115/api/edit-town',
+                method: 'POST',
+                data : obj
+            });
+        },
+
+        deleteTown: function (Id) {
+            return $http({
+                url: 'http://localhost:58115/api/delete-town',
+                method: 'POST',
+                data : Id
             });
         }
 

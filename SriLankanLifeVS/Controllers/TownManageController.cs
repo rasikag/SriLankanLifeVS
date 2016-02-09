@@ -38,9 +38,9 @@ namespace SriLankanLifeVS.Controllers
         [Route("api/get-by-name")]
         public IQueryable<District> GetDistrictByName(string Name)
         {
-            
+
             IQueryable<District> dist = _db.Districts.Where(p => p.DistrictName.Contains(Name));
-            
+
             return dist;
         }
 
@@ -51,11 +51,11 @@ namespace SriLankanLifeVS.Controllers
             if (ModelState.IsValid)
             {
                 District d = _db.Districts.FirstOrDefault(dis => dis.DistrictName == Town.DistrictName);
-                if (d==null)
+                if (d == null)
                 {
                     return BadRequest("DIstrict is not difined. Please add a difined district that suggest by the list");
                 }
-                
+
                 Town t = new Town();
                 t.DistrictId = d.Id;
                 t.TownName = Town.TownName;
@@ -67,11 +67,41 @@ namespace SriLankanLifeVS.Controllers
             {
                 return BadRequest("Model state is not valid");
             }
-
-
-            
         }
 
+
+        [HttpPost]
+        [Route("api/edit-town")]
+        public async Task<IHttpActionResult> EditTown(VMTownGetAll t)
+        {
+            District d = _db.Districts.FirstOrDefault(dis => dis.DistrictName == t.DistrictName);
+            if (d == null)
+            {
+                return BadRequest("DIstrict is not difined. Please add a difined district that suggest by the list");
+            }
+
+            Town town = _db.Towns.FirstOrDefault(twn => twn.Id == t.TownId);
+            if (town == null)
+            {
+                return BadRequest("Error happend. Please try again");
+            }
+
+            town.DistrictId = d.Id;
+            town.TownName = t.TownName;
+            await _db.SaveChangesAsync();
+            return Ok("Succesfully added");
+        }
+
+        [HttpPost]
+        [Route("api/delete-town")]
+        public async Task<IHttpActionResult> DeleteTown([FromBody] int Id)
+        {
+
+            Town town = _db.Towns.FirstOrDefault(twn => twn.Id == Id);
+            _db.Towns.Remove(town);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
 
     }
 

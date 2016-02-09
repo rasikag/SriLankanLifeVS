@@ -93,14 +93,14 @@
                     </div>
                     <div class="row"><div class="col-md-3 form-group"> District Name : </div></div>
                     <div class="row">
-                        
+
                         <div class="col-md-5">
-                            <input type="text" 
-                                   ng-model="town.DistrictName" 
+                            <input type="text"
+                                   ng-model="town.DistrictName"
                                    placeholder="District"
-                                   uib-typeahead="DistrictName for DistrictName in getTown($viewValue)" 
-                                   typeahead-loading="loadingLocations" 
-                                   typeahead-no-results="noResults" 
+                                   uib-typeahead="DistrictName for DistrictName in getTown($viewValue)"
+                                   typeahead-loading="loadingLocations"
+                                   typeahead-no-results="noResults"
                                    class="form-control"
                                    ng-required="required">
                             <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
@@ -136,23 +136,53 @@
             <div class="col-md-3 col-md-offset-3"><h3>Town List</h3></div>
         </div>
         </br>
-        
+
+
+        <div class="row">
+            <div>
+                <div class="col-md-2">
+                    <h4>Town </h4>
+
+                </div>
+                <div class="col-md-2">
+                    <h4>District</h4>
+                </div>
+                <div class="col-md-2">
+                    <h4>Edit</h4>
+                </div>
+                <div class="col-md-2">
+                    <h4>Delete</h4>
+                </div>
+            </div>
+        </div>
+
+
         <div class="row" ng-repeat="towmE in allTowns">
             <div>
                 <div class="col-md-2">
                     <h4 id="{{towmE.TownTextId}}">{{towmE.TownName}}</h4>
-                    <input id="{{towmE.TownInputId}}" type="text"  class="form-control ng-hide" ng-model="towmE.TownName" />
+                    <input id="{{towmE.TownInputId}}" type="text" class="form-control ng-hide" ng-model="towmE.TownName" />
                 </div>
                 <div class="col-md-2">
                     <h4 id="{{towmE.DistrictTextId}}">{{towmE.DName}}</h4>
-                    <input type="text" id="{{towmE.DistrictInputId}}" class="form-control ng-hide" ng-model="towmE.DName" />
+                    <input type="text"
+                           id="{{towmE.DistrictInputId}}"
+                           uib-typeahead="DistrictName for DistrictName in getTown($viewValue)"
+                           typeahead-loading="loadingLocations"
+                           typeahead-no-results="noResults"
+                           class="form-control ng-hide"
+                           ng-model="towmE.DName" />
+                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                    <div ng-show="noResults">
+                        <i class="glyphicon glyphicon-remove"></i> No Results Found
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <button id="{{towmE.EditButtonId}}" class="btn btn-success" ng-click="editTown(towmE)">Edit</button>
                     <button id="{{towmE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedTown(towmE)">Save</button>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-danger" ng-click="deleteDistrict(towmE)">Delete</button>
+                    <button class="btn btn-danger" ng-click="deleteTown(towmE.Id)">Delete</button>
                 </div>
             </div>
         </div>
@@ -224,6 +254,7 @@
     <script src="~/Scripts/AngularJS/Admin/TownManage/app.js"></script>
     <script src="~/Scripts/AngularJS/Admin/TownManage/Controller/TownManageContoller.js"></script>
     <script src="~/Scripts/AngularJS/Admin/TownManage/Service/TownManageService.js"></script>
+
 </body>
 </html>
 

@@ -38,11 +38,10 @@ srilankanlife.controller('townController', function townController($scope, dataT
             });
     };
 
-
     var getAll = function getAllTowns() {
         dataTown.getAllTown()
             .then(function (respons) {
-                console.log(respons);
+                //console.log(respons);
                 var twons = new Array();
                 for (var i = 0 ; i < respons.data.length; i++) {
 
@@ -51,7 +50,7 @@ srilankanlife.controller('townController', function townController($scope, dataT
                         TownName: respons.data[i].TownName,
                         DistrictId: respons.data[i].DistrictId,
                         DName: respons.data[i].District.DistrictName,
-                        
+
                         TownTextId: 'T' + respons.data[i].Id,
                         TownInputId: 'I' + respons.data[i].Id,
                         DistrictTextId: 'T' + respons.data[i].Id + '_' + respons.data[i].DistrictId,
@@ -72,7 +71,7 @@ srilankanlife.controller('townController', function townController($scope, dataT
 
     $scope.editTown = function (towmE) {
 
-        console.log(towmE);
+        //console.log(towmE);
 
         var showInputTown = "#" + towmE.TownInputId;
         var hideTown = "#" + towmE.TownTextId;
@@ -89,6 +88,35 @@ srilankanlife.controller('townController', function townController($scope, dataT
         $(hideEdit).addClass("ng-hide");
 
     };
+
+    $scope.saveEditedTown = function (towmE) {
+        //console.log(towmE);
+
+        var obj = {
+            TownId: towmE.Id,
+            TownName: towmE.TownName,
+            DistrictName: towmE.DName
+        };
+
+        dataTown.editTown(obj)
+            .then(function (response) {
+                getAll();
+                //console.log(response);
+            }, function (response) {
+                //console.log(response);
+            });
+
+    }
+
+    $scope.deleteTown = function (Id) {
+
+        dataTown.deleteTown(Id).then(
+            function (response) {
+                getAll();
+            }, function (response) {
+
+            });
+    }
 
     getAll();
 
