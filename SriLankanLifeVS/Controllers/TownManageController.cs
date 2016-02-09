@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using SriLankanLifeVS.Models.TravelContext;
 using SriLankanLifeVS.Models.EntityModels;
+using System.ComponentModel.DataAnnotations;
+using SriLankanLifeVS.Models.EntityModels;
 
 namespace SriLankanLifeVS.Controllers
 {
@@ -14,9 +16,22 @@ namespace SriLankanLifeVS.Controllers
     {
         private TravelContext _db = new TravelContext();
 
-        public async Task<IHttpActionResult> GetAll()
+        [HttpGet]
+        [Route("api/get-all")]
+        public IHttpActionResult GetAll()
         {
-            return Ok();
+            List<Town> town = _db.Towns.ToList();
+            //List<VMTownGetAll> townAll = new List<VMTownGetAll>();
+            //for (int i = 0; i<town.Capacity; i++)
+            //{
+            //    VMTownGetAll _town = new VMTownGetAll();
+            //    _town.TownId = town[i].Id;
+            //    _town.TownName = town[i].TownName;
+            //    _town.DistrictId = town[i].DistrictId;
+            //    _town.DistrictName = town[i].District.DistrictName;
+            //    townAll.Add(_town);
+            //}
+            return Ok(town);
         }
 
         [HttpGet]
@@ -28,5 +43,53 @@ namespace SriLankanLifeVS.Controllers
             
             return dist;
         }
+
+        [HttpPost]
+        [Route("api/add-town")]
+        public async Task<IHttpActionResult> AddTown(VMTown Town)
+        {
+            if (ModelState.IsValid)
+            {
+                District d = _db.Districts.FirstOrDefault(dis => dis.DistrictName == Town.DistrictName);
+                if (d==null)
+                {
+                    return BadRequest("DIstrict is not difined. Please add a difined district that suggest by the list");
+                }
+                
+                Town t = new Town();
+                t.DistrictId = d.Id;
+                t.TownName = Town.TownName;
+                _db.Towns.Add(t);
+                await _db.SaveChangesAsync();
+                return Ok("Successfully added recode");
+            }
+            else
+            {
+                return BadRequest("Model state is not valid");
+            }
+
+
+            
+        }
+
+
     }
+
+    public class VMTown
+    {
+        [Required]
+        public string TownName { get; set; }
+        [Required]
+        public string DistrictName { get; set; }
+    }
+
+
+    public class VMTownGetAll
+    {
+        public int TownId { get; set; }
+        public string TownName { get; set; }
+        public int DistrictId { get; set; }
+        public string DistrictName { get; set; }
+    }
+
 }

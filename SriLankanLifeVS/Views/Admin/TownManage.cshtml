@@ -17,6 +17,34 @@
     <!--  added yeti theame -->
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
+
+    <style>
+        .typeahead-demo .custom-popup-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+            .typeahead-demo .custom-popup-wrapper > .message {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                color: #868686;
+            }
+
+            .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+                position: static;
+                float: none;
+                display: block;
+                min-width: 160px;
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+    </style>
 </head>
 <body>
     <div>
@@ -56,16 +84,35 @@
 
         <div class="row">
             <div class="col-md-12">
-                <form name="districtForm">
+                <form name="townForm">
+                    <div class="row"><div class="col-md-3 form-group"> Town Name : </div></div>
                     <div class="row">
-                        <div class="col-md-3 form-group"> Town Name : </div>
                         <div class="col-md-5">
-                            <input type="text" ng-model="district.DistrictName" class="form-control" ng-required="required" />
+                            <input type="text" ng-model="town.TownName" class="form-control" ng-required="required" />
                         </div>
                     </div>
+                    <div class="row"><div class="col-md-3 form-group"> District Name : </div></div>
+                    <div class="row">
+                        
+                        <div class="col-md-5">
+                            <input type="text" 
+                                   ng-model="town.DistrictName" 
+                                   placeholder="District"
+                                   uib-typeahead="DistrictName for DistrictName in getTown($viewValue)" 
+                                   typeahead-loading="loadingLocations" 
+                                   typeahead-no-results="noResults" 
+                                   class="form-control"
+                                   ng-required="required">
+                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                            <div ng-show="noResults">
+                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                            </div>
+                        </div>
+                    </div>
+                    </br>
                     <div class="row">
                         <div class="col-md-2">
-                            <button class="btn btn-success" ng-click="addDistrict(district , districtForm)">Add</button>
+                            <button class="btn btn-success" ng-click="addTown(town , townForm)">Add</button>
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-danger" ng-click="clearForm()">Clear</button>
@@ -74,37 +121,41 @@
                 </form>
             </div>
         </div>
+
+        <div class="row">
+            <div ng-hide="messageDiv">
+                <h4>{{messageStatment}}</h4>
+            </div>
+        </div>
+
+
         </br>
-        @*<div class="row">
-            <div ng-show="districtStatusTrue">
-                <h3>Successfully added to DataBase</h3>
-            </div>
-            <div ng-show="districtStatusFalse">
-                <h3>There is a error. Plese try again</h3>
-            </div>
-        </div>*@
         </br>
 
-        @*<div class="row">
-            <div class="col-md-3 col-md-offset-3"><h3>District List</h3></div>
-        </div>*@
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><h3>Town List</h3></div>
+        </div>
         </br>
-
-        @*<div class="row" ng-repeat="dist in allDistrict">
+        
+        <div class="row" ng-repeat="towmE in allTowns">
             <div>
-                <div class="col-md-3">
-                    <h4 id="{{dist.TextId}}">{{dist.DistrictName}}</h4>
-                    <input type="text" id="{{dist.InputId}}" class="form-control ng-hide" ng-model="dist.DistrictName" />
+                <div class="col-md-2">
+                    <h4 id="{{towmE.TownTextId}}">{{towmE.TownName}}</h4>
+                    <input id="{{towmE.TownInputId}}" type="text"  class="form-control ng-hide" ng-model="towmE.TownName" />
                 </div>
-                <div class="col-md-3">
-                    <button id="{{dist.EditButtonId}}" class="btn btn-success" ng-click="editDistrict(dist)">Edit</button>
-                    <button id="{{dist.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedDistr(dist)">Save</button>
+                <div class="col-md-2">
+                    <h4 id="{{towmE.DistrictTextId}}">{{towmE.DName}}</h4>
+                    <input type="text" id="{{towmE.DistrictInputId}}" class="form-control ng-hide" ng-model="towmE.DName" />
                 </div>
-                <div class="col-md-3">
-                    <button class="btn btn-danger" ng-click="deleteDistrict(dist)">Delete</button>
+                <div class="col-md-2">
+                    <button id="{{towmE.EditButtonId}}" class="btn btn-success" ng-click="editTown(towmE)">Edit</button>
+                    <button id="{{towmE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedTown(towmE)">Save</button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger" ng-click="deleteDistrict(towmE)">Delete</button>
                 </div>
             </div>
-        </div>*@
+        </div>
 
     </div>
     </br>
