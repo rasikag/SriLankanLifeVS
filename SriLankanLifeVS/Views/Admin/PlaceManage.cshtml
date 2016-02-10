@@ -130,7 +130,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <textarea ng-model="place.Discription" class="form-control" ng-required="required" cols="15" rows="6" ></textarea>
+                            <textarea ng-model="place.Discription" class="form-control" ng-required="required" cols="15" rows="6"></textarea>
                         </div>
                     </div>
 
@@ -139,7 +139,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <textarea ng-model="place.QFacts" class="form-control" ng-required="required" ></textarea>
+                            <textarea ng-model="place.QFacts" class="form-control" ng-required="required"></textarea>
                         </div>
                     </div>
 
@@ -189,60 +189,103 @@
         </br>
         </br>
 
-        @*<div class="row">
-                <div class="col-md-3 col-md-offset-3"><h3>Town List</h3></div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><h3>Places</h3></div>
+        </div>
+        </br>
+
+
+        <div class="row">
+            <div>
+                <div class="col-md-1">
+                    <h4>Place Name </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Longitude </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Latitude </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Address </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Discription </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Quick Facts </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Town Name </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Edit </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Save </h4>
+                </div>
             </div>
-            </br>*@
+        </div>
 
 
-        @*<div class="row">
-                <div>
-                    <div class="col-md-2">
-                        <h4>Town </h4>
+        <div class="row" ng-repeat="placeE in allPlaces">
+            <div>
 
-                    </div>
-                    <div class="col-md-2">
-                        <h4>District</h4>
-                    </div>
-                    <div class="col-md-2">
-                        <h4>Edit</h4>
-                    </div>
-                    <div class="col-md-2">
-                        <h4>Delete</h4>
+                <div class="col-md-1">
+                    <h4 id="{{placeE.PlaceNameTextId}}">{{placeE.PlaceName}}</h4>
+                    <input id="{{placeE.PlaceNameInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.PlaceName" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.LongitudeTextId}}">{{placeE.Longitude}}</h4>
+                    <input id="{{placeE.LongitudeInputId}}" type="number" class="form-control ng-hide" ng-model="placeE.Longitude" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.LatitudeTextId}}">{{placeE.Latitude}}</h4>
+                    <input id="{{placeE.LatitudeInputId}}" type="number" class="form-control ng-hide" ng-model="placeE.Latitude" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.AddressTextId}}">{{placeE.Address}}</h4>
+                    <input id="{{placeE.AddressInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.Address" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.DiscriptionTextId}}">{{placeE.Discription}}</h4>
+                    <input id="{{placeE.DiscriptionInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.Discription" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.QuickFactsTextId}}">{{placeE.QuickFacts}}</h4>
+                    <input id="{{placeE.QuickFactsInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.QuickFacts" />
+                </div>
+
+
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.TownNameTextId}}">{{placeE.TownName}}</h4>
+                    <input type="text"
+                           id="{{placeE.TownNameInputId}}"
+                           uib-typeahead="TownName for TownName in getTownByName($viewValue)"
+                           typeahead-loading="loadingLocations"
+                           typeahead-no-results="noResults"
+                           class="form-control ng-hide"
+                           ng-model="placeE.TownName" />
+                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                    <div ng-show="noResults">
+                        <i class="glyphicon glyphicon-remove"></i> No Results Found
                     </div>
                 </div>
-            </div>*@
-
-
-        @*<div class="row" ng-repeat="towmE in allTowns">
-                <div>
-                    <div class="col-md-2">
-                        <h4 id="{{towmE.TownTextId}}">{{towmE.TownName}}</h4>
-                        <input id="{{towmE.TownInputId}}" type="text" class="form-control ng-hide" ng-model="towmE.TownName" />
-                    </div>
-                    <div class="col-md-2">
-                        <h4 id="{{towmE.DistrictTextId}}">{{towmE.DName}}</h4>
-                        <input type="text"
-                               id="{{towmE.DistrictInputId}}"
-                               uib-typeahead="DistrictName for DistrictName in getTown($viewValue)"
-                               typeahead-loading="loadingLocations"
-                               typeahead-no-results="noResults"
-                               class="form-control ng-hide"
-                               ng-model="towmE.DName" />
-                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                        <div ng-show="noResults">
-                            <i class="glyphicon glyphicon-remove"></i> No Results Found
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button id="{{towmE.EditButtonId}}" class="btn btn-success" ng-click="editTown(towmE)">Edit</button>
-                        <button id="{{towmE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedTown(towmE)">Save</button>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-danger" ng-click="deleteTown(towmE.Id)">Delete</button>
-                    </div>
+                <div class="col-md-1">
+                    <button id="{{placeE.EditButtonId}}" class="btn btn-success" ng-click="editPlace(placeE)">Edit</button>
+                    <button id="{{placeE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedPlace(placeE)">Save</button>
                 </div>
-            </div>*@
+                <div class="col-md-1">
+                    <button class="btn btn-danger" ng-click="deletePlace(placeE.Id)">Delete</button>
+                </div>
+            </div>
+        </div>
 
     </div>
     </br>

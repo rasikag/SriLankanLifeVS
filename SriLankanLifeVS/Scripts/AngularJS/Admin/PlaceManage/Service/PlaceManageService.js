@@ -31,21 +31,22 @@ srilankanlife.factory('dataPlace', function ($http) {
             });
         },
 
-        //editTown: function (obj) {
-        //    return $http({
-        //        url: 'http://localhost:58115/api/edit-town',
-        //        method: 'POST',
-        //        data : obj
-        //    });
-        //},
+        editPlace: function (obj) {
+            
+            return $http({
+                url: 'http://localhost:58115/api/edit-place',
+                method: 'POST',
+                data : obj
+            });
+        },
 
-        //deleteTown: function (Id) {
-        //    return $http({
-        //        url: 'http://localhost:58115/api/delete-town',
-        //        method: 'POST',
-        //        data : Id
-        //    });
-        //}
+        deletePlace: function (Id) {
+            return $http({
+                url: 'http://localhost:58115/api/delete-place',
+                method: 'POST',
+                data : Id
+            });
+        }
 
     }
 

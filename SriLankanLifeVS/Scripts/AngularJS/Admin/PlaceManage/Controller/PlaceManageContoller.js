@@ -47,77 +47,133 @@ srilankanlife.controller('placeController', function placeController($scope, dat
                 for (var i = 0 ; i < respons.data.length; i++) {
 
                     var obj = {
+
                         Id: respons.data[i].Id,
-                        TownName: respons.data[i].TownName,
-                        DistrictId: respons.data[i].DistrictId,
-                        DName: respons.data[i].District.DistrictName,
+                        PlaceName: respons.data[i].PlaceName,
+                        Longitude: respons.data[i].Longitude,
+                        Latitude: respons.data[i].Latitude,
+                        Address: respons.data[i].Address,
+                        Discription: respons.data[i].Description,
+                        QuickFacts: respons.data[i].QuickFacts,
+                        TownName: respons.data[i].TownName[0],
 
-                        TownTextId: 'T' + respons.data[i].Id,
-                        TownInputId: 'I' + respons.data[i].Id,
-                        DistrictTextId: 'T' + respons.data[i].Id + '_' + respons.data[i].DistrictId,
-                        DistrictInputId: 'I' + respons.data[i].Id + '_' + respons.data[i].DistrictId,
+                        PlaceNameTextId: 'PlaceNameTextId' + i,
+                        PlaceNameInputId: 'PlaceNameInputId' + i,
+                        LongitudeTextId: 'LongitudeTextId' + i,
+                        LongitudeInputId: 'LongitudeInputId' + i,
 
-                        EditButtonId: 'E_' + respons.data[i].Id,
-                        SaveButtonId: 'S_' + respons.data[i].Id
+                        LatitudeTextId: 'LatitudeTextId' + i,
+                        LatitudeInputId: 'LatitudeInputId' + i,
+                        AddressTextId: 'AddressTextId' + i,
+                        AddressInputId: 'AddressInputId' + i,
+
+                        DiscriptionTextId: 'DiscriptionTextId' + i,
+                        DiscriptionInputId: 'DiscriptionInputId' + i,
+                        QuickFactsTextId: 'QuickFactsTextId' + i,
+                        QuickFactsInputId: 'QuickFactsInputId' + i,
+
+                        TownNameTextId: 'TownNameTextId' + i,
+                        TownNameInputId: 'TownNameInputId' + i,
+
+
+                        EditButtonId: 'E_' + i,
+                        SaveButtonId: 'S_' + i
                     };
 
-                    twons.push(obj);
+                    places.push(obj);
                 }
-                $scope.allTowns = twons;
+                $scope.allPlaces = places;
                 //console.log(twons);
             }, function (respons) {
                 //console.log(respons);
             });
     };
 
-    //$scope.editTown = function (towmE) {
+    $scope.editPlace = function (placeE) {
 
-    //    //console.log(towmE);
+        //console.log(towmE);
 
-    //    var showInputTown = "#" + towmE.TownInputId;
-    //    var hideTown = "#" + towmE.TownTextId;
-    //    var showInputDistrict = "#" + towmE.DistrictInputId;
-    //    var hideDistrict = "#" + towmE.DistrictTextId;
-    //    var showSave = "#" + towmE.SaveButtonId;
-    //    var hideEdit = "#" + towmE.EditButtonId;
+        var PlaceNameTextId = '#' + placeE.PlaceNameTextId;
+        var PlaceNameInputId = '#' + placeE.PlaceNameInputId;
+        var LongitudeTextId = '#' + placeE.LongitudeTextId;
+        var LongitudeInputId = '#' + placeE.LongitudeInputId;
 
-    //    $(hideTown).addClass("ng-hide");
-    //    $(showInputTown).removeClass("ng-hide");
-    //    $(showInputDistrict).removeClass("ng-hide");
-    //    $(hideDistrict).addClass("ng-hide");
-    //    $(showSave).removeClass("ng-hide");
-    //    $(hideEdit).addClass("ng-hide");
+        var LatitudeTextId = '#' + placeE.LatitudeTextId;
+        var LatitudeInputId = '#' + placeE.LatitudeInputId;
+        var AddressTextId = '#' + placeE.AddressTextId;
+        var AddressInputId = '#' + placeE.AddressInputId;
 
-    //};
+        var DiscriptionTextId = '#' + placeE.DiscriptionTextId;
+        var DiscriptionInputId = '#' + placeE.DiscriptionInputId;
+        var QuickFactsTextId = '#' + placeE.QuickFactsTextId;
+        var QuickFactsInputId = '#' + placeE.QuickFactsInputId;
 
-    //$scope.saveEditedTown = function (towmE) {
-    //    //console.log(towmE);
+        var TownNameTextId = '#' + placeE.TownNameTextId;
+        var TownNameInputId = '#' + placeE.TownNameInputId;
 
-    //    var obj = {
-    //        TownId: towmE.Id,
-    //        TownName: towmE.TownName,
-    //        DistrictName: towmE.DName
-    //    };
+        var EditButtonId = '#' + placeE.EditButtonId;
+        var SaveButtonId = '#' + placeE.SaveButtonId;
 
-    //    dataTown.editTown(obj)
-    //        .then(function (response) {
-    //            getAll();
-    //            //console.log(response);
-    //        }, function (response) {
-    //            //console.log(response);
-    //        });
+        $(PlaceNameTextId).addClass("ng-hide");
+        $(PlaceNameInputId).removeClass("ng-hide");
+        $(LongitudeTextId).addClass("ng-hide");
+        $(LongitudeInputId).removeClass("ng-hide");
 
-    //};
+        $(LatitudeTextId).addClass("ng-hide");
+        $(LatitudeInputId).removeClass("ng-hide");
+        $(AddressTextId).addClass("ng-hide");
+        $(AddressInputId).removeClass("ng-hide");
 
-    //$scope.deleteTown = function (Id) {
+        $(DiscriptionTextId).addClass("ng-hide");
+        $(DiscriptionInputId).removeClass("ng-hide");
+        $(QuickFactsTextId).addClass("ng-hide");
+        $(QuickFactsInputId).removeClass("ng-hide");
 
-    //    dataTown.deleteTown(Id).then(
-    //        function (response) {
-    //            getAll();
-    //        }, function (response) {
+        $(TownNameTextId).addClass("ng-hide");
+        $(TownNameInputId).removeClass("ng-hide");
 
-    //        });
-    //}
+        $(EditButtonId).addClass("ng-hide");
+        $(SaveButtonId).removeClass("ng-hide");
+
+
+
+    };
+
+    $scope.saveEditedPlace = function (placeE) {
+        console.log(placeE);
+
+        var obj = {
+            Id: placeE.Id,
+            PlaceName: placeE.PlaceName,
+            Longitude: placeE.Longitude,
+            Latitude: placeE.Latitude,
+            Address: placeE.Address,
+            Discription: placeE.Discription,
+            QFacts: placeE.QuickFacts,
+            TownName: placeE.TownName,
+        };
+        console.log(obj);
+        dataPlace.editPlace(obj)
+            .then(function (response) {
+                getAllPlaces();
+                //console.log(response);
+            }, function (response) {
+                //console.log(response);
+            });
+
+    };
+
+    $scope.deletePlace = function (Id) {
+
+        var obj = {Id : Id};
+
+        dataPlace.deletePlace(obj).then(
+            function (response) {
+                getAllPlaces();
+            }, function (response) {
+
+            });
+    }
 
     getAllPlaces();
 
