@@ -226,6 +226,7 @@
     <Compile Include="Controllers\EventCommentManageController.cs" />
     <Compile Include="Controllers\EventImageManageController.cs" />
     <Compile Include="Controllers\EventVideoManageController.cs" />
+    <Compile Include="Controllers\PlaceCategoryManageController.cs" />
     <Compile Include="Controllers\PlaceCommentManageController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Controllers\PlaceImageManageController.cs" />
+    <Compile Include="Controllers\PlaceManageController.cs" />
     <Compile Include="Controllers\PlaceVideoManageController.cs" />
     <Compile Include="Controllers\TownManageController.cs" />
     <Compile Include="Extensions\CustomMultipartFormDataStreamProvider.cs" />
@@ -335,6 +337,12 @@
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Service\fileService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Controller\ImageUploadController.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceCategoryManage\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceCategoryManage\Controller\PlaceCatManageController.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceCategoryManage\Service\PlaceCatManageService.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceManage\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceManage\Controller\PlaceManageContoller.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceManage\Service\PlaceManageService.js" />
     <Content Include="Scripts\AngularJS\Admin\TownManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\TownManage\Controller\TownManageContoller.js" />
     <Content Include="Scripts\AngularJS\Admin\TownManage\Service\TownManageService.js" />
@@ -424,6 +432,8 @@
     <Content Include="Views\Admin\DistrictManage.cshtml" />
     <Content Include="Views\Place\Index.cshtml" />
     <Content Include="Views\Admin\TownManage.cshtml" />
+    <Content Include="Views\Admin\PlaceCategoryManage.cshtml" />
+    <Content Include="Views\Admin\PlaceManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

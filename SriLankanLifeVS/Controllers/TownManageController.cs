@@ -8,7 +8,6 @@ using System.Web.Http;
 using SriLankanLifeVS.Models.TravelContext;
 using SriLankanLifeVS.Models.EntityModels;
 using System.ComponentModel.DataAnnotations;
-using SriLankanLifeVS.Models.EntityModels;
 
 namespace SriLankanLifeVS.Controllers
 {

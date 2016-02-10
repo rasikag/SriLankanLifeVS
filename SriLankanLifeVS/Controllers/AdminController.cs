@@ -20,14 +20,12 @@ namespace SriLankanLifeVS.Controllers
             return View();
         }
 
-
         // add or remove district 
 
         public ActionResult DistrictManage()
         {
             return View();
         }
-
 
         //add or remove town 
 
@@ -36,5 +34,18 @@ namespace SriLankanLifeVS.Controllers
             return View();
         }
 
+        // Place category manage 
+
+        public ActionResult PlaceCategoryManage()
+        {
+            return View();
+        }
+
+        // Place Manage
+
+        public ActionResult PlaceManage()
+        {
+            return View();
+        }
     }
 }

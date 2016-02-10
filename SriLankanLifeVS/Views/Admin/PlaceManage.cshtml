@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "TownManage";
+    ViewBag.Title = "PlaceManage";
     Layout = "";
 }
 
@@ -45,7 +45,6 @@
                 box-shadow: none;
             }
     </style>
-
 </head>
 <body>
     <div>
@@ -81,25 +80,80 @@
     </div>
     </br>
     </br>
-    <div class="container" ng-controller="townController">
+
+
+    <div class="container" ng-controller="placeController">
 
         <div class="row">
             <div class="col-md-12">
                 <form name="townForm">
-                    <div class="row"><div class="col-md-3 form-group"> Town Name : </div></div>
+
+
+                    <div class="row">
+                        <div class="col-md-3 form-group"> Place Name : </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-5">
-                            <input type="text" ng-model="town.TownName" class="form-control" ng-required="required" />
+                            <input type="text" ng-model="place.PlaceName" class="form-control" ng-required="required" />
                         </div>
                     </div>
-                    <div class="row"><div class="col-md-3 form-group"> District Name : </div></div>
-                    <div class="row">
 
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Longitude : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="number" ng-model="place.Longitude" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Latitude : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="number" ng-model="place.Latitude" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Address : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" ng-model="place.Address" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Discription : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <textarea ng-model="place.Discription" class="form-control" ng-required="required" cols="15" rows="6" ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Quick Facts : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <textarea ng-model="place.QFacts" class="form-control" ng-required="required" ></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-3 form-group"> Town Name : </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-5">
                             <input type="text"
-                                   ng-model="town.DistrictName"
-                                   placeholder="District"
-                                   uib-typeahead="DistrictName for DistrictName in getTown($viewValue)"
+                                   ng-model="place.TownName"
+                                   placeholder="Town"
+                                   uib-typeahead="TownName for TownName in getTownByName($viewValue)"
                                    typeahead-loading="loadingLocations"
                                    typeahead-no-results="noResults1"
                                    class="form-control"
@@ -110,10 +164,12 @@
                             </div>
                         </div>
                     </div>
+
                     </br>
+
                     <div class="row">
                         <div class="col-md-2">
-                            <button class="btn btn-success" ng-click="addTown(town , townForm)">Add</button>
+                            <button class="btn btn-success" ng-click="addPlace(place , townForm)">Add</button>
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-danger" ng-click="clearForm()">Clear</button>
@@ -133,60 +189,60 @@
         </br>
         </br>
 
-        <div class="row">
-            <div class="col-md-3 col-md-offset-3"><h3>Town List</h3></div>
-        </div>
-        </br>
-
-
-        <div class="row">
-            <div>
-                <div class="col-md-2">
-                    <h4>Town </h4>
-
-                </div>
-                <div class="col-md-2">
-                    <h4>District</h4>
-                </div>
-                <div class="col-md-2">
-                    <h4>Edit</h4>
-                </div>
-                <div class="col-md-2">
-                    <h4>Delete</h4>
-                </div>
+        @*<div class="row">
+                <div class="col-md-3 col-md-offset-3"><h3>Town List</h3></div>
             </div>
-        </div>
+            </br>*@
 
 
-        <div class="row" ng-repeat="towmE in allTowns">
-            <div>
-                <div class="col-md-2">
-                    <h4 id="{{towmE.TownTextId}}">{{towmE.TownName}}</h4>
-                    <input id="{{towmE.TownInputId}}" type="text" class="form-control ng-hide" ng-model="towmE.TownName" />
-                </div>
-                <div class="col-md-2">
-                    <h4 id="{{towmE.DistrictTextId}}">{{towmE.DName}}</h4>
-                    <input type="text"
-                           id="{{towmE.DistrictInputId}}"
-                           uib-typeahead="DistrictName for DistrictName in getTown($viewValue)"
-                           typeahead-loading="loadingLocations"
-                           typeahead-no-results="noResults"
-                           class="form-control ng-hide"
-                           ng-model="towmE.DName" />
-                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-                    <div ng-show="noResults">
-                        <i class="glyphicon glyphicon-remove"></i> No Results Found
+        @*<div class="row">
+                <div>
+                    <div class="col-md-2">
+                        <h4>Town </h4>
+
+                    </div>
+                    <div class="col-md-2">
+                        <h4>District</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Edit</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Delete</h4>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <button id="{{towmE.EditButtonId}}" class="btn btn-success" ng-click="editTown(towmE)">Edit</button>
-                    <button id="{{towmE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedTown(towmE)">Save</button>
+            </div>*@
+
+
+        @*<div class="row" ng-repeat="towmE in allTowns">
+                <div>
+                    <div class="col-md-2">
+                        <h4 id="{{towmE.TownTextId}}">{{towmE.TownName}}</h4>
+                        <input id="{{towmE.TownInputId}}" type="text" class="form-control ng-hide" ng-model="towmE.TownName" />
+                    </div>
+                    <div class="col-md-2">
+                        <h4 id="{{towmE.DistrictTextId}}">{{towmE.DName}}</h4>
+                        <input type="text"
+                               id="{{towmE.DistrictInputId}}"
+                               uib-typeahead="DistrictName for DistrictName in getTown($viewValue)"
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"
+                               class="form-control ng-hide"
+                               ng-model="towmE.DName" />
+                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                        <div ng-show="noResults">
+                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="{{towmE.EditButtonId}}" class="btn btn-success" ng-click="editTown(towmE)">Edit</button>
+                        <button id="{{towmE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedTown(towmE)">Save</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" ng-click="deleteTown(towmE.Id)">Delete</button>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-danger" ng-click="deleteTown(towmE.Id)">Delete</button>
-                </div>
-            </div>
-        </div>
+            </div>*@
 
     </div>
     </br>
@@ -252,9 +308,9 @@
     <script src="~/Scripts/AngularJS/angular.js"></script>
     <script src="~/Scripts/AngularJS/angular-animate.min.js"></script>
     <script src="~/Scripts/AngularJS/ui-bootstrap-tpls-1.1.2.min.js"></script>
-    <script src="~/Scripts/AngularJS/Admin/TownManage/app.js"></script>
-    <script src="~/Scripts/AngularJS/Admin/TownManage/Controller/TownManageContoller.js"></script>
-    <script src="~/Scripts/AngularJS/Admin/TownManage/Service/TownManageService.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/PlaceManage/app.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/PlaceManage/Controller/PlaceManageContoller.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/PlaceManage/Service/PlaceManageService.js"></script>
 
 </body>
 </html>
