@@ -1,0 +1,367 @@
+﻿
+@{
+    ViewBag.Title = "EventManage";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html ng-app="srilankanlife">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <!--  added yeti theame -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <style>
+        .typeahead-demo .custom-popup-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+            .typeahead-demo .custom-popup-wrapper > .message {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                color: #868686;
+            }
+
+            .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+                position: static;
+                float: none;
+                display: block;
+                min-width: 160px;
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="index.html">Sri Lankan <span>Life</span></a></h1>
+                </div>
+                <div class="top-nav">
+                    <nav>
+                        @*removed below code*@
+                        @*<nav class="navbar navbar-default">*@
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                Menu
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="codes.html">Codes</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    </br>
+    </br>
+
+    <div class="container">
+        <div class="row">
+            <h3>Add Event </h3>
+        </div>
+    </div>
+
+    <div class="container" ng-controller="placeController">
+
+        <div class="row">
+            <div class="col-md-12">
+                <form name="townForm">
+
+
+                    <div class="row">
+                        <div class="col-md-3 form-group"> Event Name : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" ng-model="place.PlaceName" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Longitude : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="number" ng-model="place.Longitude" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Latitude : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="number" ng-model="place.Latitude" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Address : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" ng-model="place.Address" class="form-control" ng-required="required" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Discription : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <textarea ng-model="place.Discription" class="form-control" ng-required="required" cols="15" rows="6"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">  Quick Facts : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <textarea ng-model="place.QFacts" class="form-control" ng-required="required"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-3 form-group"> Town Name : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text"
+                                   ng-model="place.TownName"
+                                   placeholder="Town"
+                                   uib-typeahead="TownName for TownName in getTownByName($viewValue)"
+                                   typeahead-loading="loadingLocations"
+                                   typeahead-no-results="noResults1"
+                                   class="form-control"
+                                   ng-required="required">
+                            <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                            <div ng-show="noResults1">
+                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button class="btn btn-success" ng-click="addPlace(place , townForm)">Add</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-danger" ng-click="clearForm()">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div ng-hide="messageDiv">
+                <h4>{{messageStatment}}</h4>
+            </div>
+        </div>
+
+
+        </br>
+        </br>
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><h3>Events</h3></div>
+        </div>
+        </br>
+
+
+        <div class="row">
+            <div>
+                <div class="col-md-1">
+                    <h4>Place Name </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Longitude </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Latitude </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Address </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Discription </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Quick Facts </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Town Name </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Edit </h4>
+                </div>
+                <div class="col-md-1">
+                    <h4>Save </h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" ng-repeat="placeE in allPlaces">
+            <div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.PlaceNameTextId}}">{{placeE.PlaceName}}</h4>
+                    <input id="{{placeE.PlaceNameInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.PlaceName" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.LongitudeTextId}}">{{placeE.Longitude}}</h4>
+                    <input id="{{placeE.LongitudeInputId}}" type="number" class="form-control ng-hide" ng-model="placeE.Longitude" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.LatitudeTextId}}">{{placeE.Latitude}}</h4>
+                    <input id="{{placeE.LatitudeInputId}}" type="number" class="form-control ng-hide" ng-model="placeE.Latitude" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.AddressTextId}}">{{placeE.Address}}</h4>
+                    <input id="{{placeE.AddressInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.Address" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.DiscriptionTextId}}">{{placeE.Discription}}</h4>
+                    <input id="{{placeE.DiscriptionInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.Discription" />
+                </div>
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.QuickFactsTextId}}">{{placeE.QuickFacts}}</h4>
+                    <input id="{{placeE.QuickFactsInputId}}" type="text" class="form-control ng-hide" ng-model="placeE.QuickFacts" />
+                </div>
+
+
+
+                <div class="col-md-1">
+                    <h4 id="{{placeE.TownNameTextId}}">{{placeE.TownName}}</h4>
+                    <input type="text"
+                           id="{{placeE.TownNameInputId}}"
+                           uib-typeahead="TownName for TownName in getTownByName($viewValue)"
+                           typeahead-loading="loadingLocations"
+                           typeahead-no-results="noResults"
+                           class="form-control ng-hide"
+                           ng-model="placeE.TownName" />
+                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                    <div ng-show="noResults">
+                        <i class="glyphicon glyphicon-remove"></i> No Results Found
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button id="{{placeE.EditButtonId}}" class="btn btn-success" ng-click="editPlace(placeE)">Edit</button>
+                    <button id="{{placeE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedPlace(placeE)">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-danger" ng-click="deletePlace(placeE.Id)">Delete</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </br>
+
+    </br>
+    </br>
+
+    <div class="footer">
+        <!-- container -->
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <h3>Details</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="codes.html">Codes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>756 gt globel Place,</li>
+                        <li>CD-Road,M 07 435.</li>
+                        <li>Telephone: +1 234 567 9871</li>
+                        <li>FAX: +1 234 567 9871</li>
+                        <li>Email : <a href="mailto:example@email.com">Example@mail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Google +</a></li>
+                        <li><a href="#">Rss</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Newsletter</h3>
+                    <form>
+                        <input type="text" placeholder="Email address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <div class="footer-bottom">
+        <!-- container -->
+        <div class="container">
+            <p> © 2015 Red Wine . All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+        <!-- //container -->
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AngularJS/angular.js"></script>
+    <script src="~/Scripts/AngularJS/angular-animate.min.js"></script>
+    <script src="~/Scripts/AngularJS/ui-bootstrap-tpls-1.1.2.min.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/EventManage/app.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/EventManage/Controller/PlaceManageContoller.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/EventManage/Service/PlaceManageService.js"></script>
+</body>
+</html>
+
+
+
+

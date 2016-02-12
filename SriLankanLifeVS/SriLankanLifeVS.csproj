@@ -223,8 +223,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DistrictManageController.cs" />
+    <Compile Include="Controllers\EventCategoryManageController.cs" />
     <Compile Include="Controllers\EventCommentManageController.cs" />
     <Compile Include="Controllers\EventImageManageController.cs" />
+    <Compile Include="Controllers\EventManageController.cs" />
     <Compile Include="Controllers\EventVideoManageController.cs" />
     <Compile Include="Controllers\PlaceCategoryManageController.cs" />
     <Compile Include="Controllers\PlaceCommentManageController.cs" />
@@ -233,6 +235,7 @@
     <Compile Include="Controllers\MainSliderManageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
+    <Compile Include="Controllers\PlaceImageManageAdminController.cs" />
     <Compile Include="Controllers\PlaceImageManageController.cs" />
     <Compile Include="Controllers\PlaceManageController.cs" />
     <Compile Include="Controllers\PlaceVideoManageController.cs" />
@@ -334,12 +337,21 @@
     <Content Include="Scripts\AngularJS\Admin\DistrictManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\DistrictManage\Controller\DistictManageController.js" />
     <Content Include="Scripts\AngularJS\Admin\DistrictManage\Service\DistrictManageService.js" />
+    <Content Include="Scripts\AngularJS\Admin\EventCategoryManage\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\EventCategoryManage\Controller\EventCatManageController.js" />
+    <Content Include="Scripts\AngularJS\Admin\EventCategoryManage\Service\EventCatManageService.js" />
+    <Content Include="Scripts\AngularJS\Admin\EventManage\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\EventManage\Controller\PlaceManageContoller.js" />
+    <Content Include="Scripts\AngularJS\Admin\EventManage\Service\PlaceManageService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Service\fileService.js" />
     <Content Include="Scripts\AngularJS\Admin\FullScreenSliderManage\Controller\ImageUploadController.js" />
     <Content Include="Scripts\AngularJS\Admin\PlaceCategoryManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\PlaceCategoryManage\Controller\PlaceCatManageController.js" />
     <Content Include="Scripts\AngularJS\Admin\PlaceCategoryManage\Service\PlaceCatManageService.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceImageManageAdmin\app.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceImageManageAdmin\Controller\ImageManageController.js" />
+    <Content Include="Scripts\AngularJS\Admin\PlaceImageManageAdmin\Service\fileService.js" />
     <Content Include="Scripts\AngularJS\Admin\PlaceManage\app.js" />
     <Content Include="Scripts\AngularJS\Admin\PlaceManage\Controller\PlaceManageContoller.js" />
     <Content Include="Scripts\AngularJS\Admin\PlaceManage\Service\PlaceManageService.js" />
@@ -434,11 +446,15 @@
     <Content Include="Views\Admin\TownManage.cshtml" />
     <Content Include="Views\Admin\PlaceCategoryManage.cshtml" />
     <Content Include="Views\Admin\PlaceManage.cshtml" />
+    <Content Include="Views\Admin\EventCategoryManage.cshtml" />
+    <Content Include="Views\Admin\PlaceAdminImageManage.cshtml" />
+    <Content Include="Views\Admin\EventManage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\FullScreenSlider\fonts\" />
     <Folder Include="Content\Sections\" />
+    <Folder Include="Images\AdminUploadedPlaces\" />
     <Folder Include="Images\Places\" />
     <Folder Include="Images\UserUploadedEvents\" />
     <Folder Include="Images\UserUploadedPlaces\" />

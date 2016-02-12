@@ -1,36 +1,36 @@
-﻿using SriLankanLifeVS.Models.EntityModels;
-using SriLankanLifeVS.Models.TravelContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
+using System.Threading.Tasks;
+using SriLankanLifeVS.Models.EntityModels;
+using SriLankanLifeVS.Models.TravelContext;
 
 namespace SriLankanLifeVS.Controllers
 {
-    public class PlaceCategoryManageController : ApiController
+    public class EventCategoryManageController : ApiController
     {
         private TravelContext _db = new TravelContext();
 
         [HttpGet]
-        [Route("api/get-all-place-category")]
+        [Route("api/get-all-event-category")]
         public IHttpActionResult GetAllDistrict()
         {
-            List<PlaceCategory> d = _db.PlaceCategories.ToList();
+            List<EventCategory> d = _db.EventCategories.ToList();
             return Ok(d);
         }
 
         [HttpPost]
-        [Route("api/add-place-categoty")]
+        [Route("api/add-event-categoty")]
         public async Task<IHttpActionResult> AddDistrict(VMPlaceCategory cat)
         {
             if (ModelState.IsValid)
             {
-                PlaceCategory _district = new PlaceCategory();
-                _district.CategoryName = cat.CategoryName;
-                _db.PlaceCategories.Add(_district);
+                EventCategory _district = new EventCategory();
+                _district.CategotyName = cat.CategoryName;
+                _db.EventCategories.Add(_district);
                 await _db.SaveChangesAsync();
                 return Ok("Successfully added to DataBase");
             }
@@ -44,17 +44,17 @@ namespace SriLankanLifeVS.Controllers
 
 
         [HttpPost]
-        [Route("api/edit-place-category")]
+        [Route("api/edit-event-category")]
         public async Task<IHttpActionResult> EditDistrict(VMPlaceCategory dist)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    PlaceCategory district = _db.PlaceCategories.SingleOrDefault(x => x.Id == dist.Id);
+                    EventCategory district = _db.EventCategories.SingleOrDefault(x => x.Id == dist.Id);
                     if (district != null)
                     {
-                        district.CategoryName = dist.CategoryName;
+                        district.CategotyName = dist.CategoryName;
                         await _db.SaveChangesAsync();
                         return Ok();
                     }
@@ -77,18 +77,18 @@ namespace SriLankanLifeVS.Controllers
 
 
         [HttpPost]
-        [Route("api/delete-place-category")]
+        [Route("api/delete-event-category")]
         public async Task<IHttpActionResult> DeleteDistrict(VMPlaceCategory dist)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    PlaceCategory district = _db.PlaceCategories.SingleOrDefault(x => x.Id == dist.Id);
+                    EventCategory district = _db.EventCategories.SingleOrDefault(x => x.Id == dist.Id);
                     if (district != null)
                     {
                         //district.DistrictName = dist.DistrictName;
-                        _db.PlaceCategories.Remove(district);
+                        _db.EventCategories.Remove(district);
                         await _db.SaveChangesAsync();
                         return Ok();
                     }
@@ -109,11 +109,5 @@ namespace SriLankanLifeVS.Controllers
             }
 
         }
-    }
-
-    public class VMPlaceCategory
-    {
-        public int Id { get; set; }
-        public string CategoryName { get; set; }
     }
 }

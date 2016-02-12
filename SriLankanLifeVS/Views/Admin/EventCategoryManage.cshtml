@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "EventCategoryManage";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html ng-app="srilankanlife">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <!--  added yeti theame -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="index.html">Sri Lankan <span>Life</span></a></h1>
+                </div>
+                <div class="top-nav">
+                    <nav>
+                        @*removed below code*@
+                        @*<nav class="navbar navbar-default">*@
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                Menu
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="codes.html">Codes</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    </br>
+    </br>
+    <div class="container" ng-controller="categoryController">
+
+        <div class="row">
+            <div class="col-md-12">
+                <form name="categoryForm">
+                    <div class="col-md-3 form-group"> Category Name : </div>
+                    <div class="col-md-5">
+                        <input type="text" ng-model="cat.CategoryName" class="form-control" ng-required="required" />
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success" ng-click="addCategory(cat , categoryForm)">Add</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-danger" ng-click="clearForm()">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </br>
+        <div class="row">
+            <div ng-show="catStatusTrue">
+                <h3>Successfully added to DataBase</h3>
+            </div>
+            <div ng-show="catStatusFalse">
+                <h3>There is a error. Plese try again</h3>
+            </div>
+        </div>
+        </br>
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3"><h3>Category List</h3></div>
+        </div>
+        </br>
+
+        <div class="row" ng-repeat="catE in allCat">
+            <div>
+                <div class="col-md-3">
+                    <h4 id="{{catE.TextId}}">{{catE.CategoryName}}</h4>
+                    <input type="text" id="{{catE.InputId}}" class="form-control ng-hide" ng-model="catE.CategoryName" />
+                </div>
+                <div class="col-md-3">
+                    <button id="{{catE.EditButtonId}}" class="btn btn-success" ng-click="editCat(catE)">Edit</button>
+                    <button id="{{catE.SaveButtonId}}" class="btn btn-success ng-hide" ng-click="saveEditedCat(catE)">Save</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-danger" ng-click="deleteCat(catE)">Delete</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </br>
+
+    </br>
+    </br>
+
+    <div class="footer">
+        <!-- container -->
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <h3>Details</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="codes.html">Codes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>756 gt globel Place,</li>
+                        <li>CD-Road,M 07 435.</li>
+                        <li>Telephone: +1 234 567 9871</li>
+                        <li>FAX: +1 234 567 9871</li>
+                        <li>Email : <a href="mailto:example@email.com">Example@mail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Google +</a></li>
+                        <li><a href="#">Rss</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Newsletter</h3>
+                    <form>
+                        <input type="text" placeholder="Email address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <div class="footer-bottom">
+        <!-- container -->
+        <div class="container">
+            <p> © 2015 Red Wine . All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+        <!-- //container -->
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AngularJS/angular.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/EventCategoryManage/app.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/EventCategoryManage/Controller/EventCatManageController.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/EventCategoryManage/Service/EventCatManageService.js"></script>
+</body>
+</html>
+
+

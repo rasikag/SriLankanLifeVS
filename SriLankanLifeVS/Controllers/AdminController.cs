@@ -47,5 +47,28 @@ namespace SriLankanLifeVS.Controllers
         {
             return View();
         }
+
+        // Place image manage admin
+
+        public ActionResult PlaceAdminImageManage()
+        {
+            return View();
+        }
+
+        // Event category manage
+
+        public ActionResult EventCategoryManage()
+        {
+            return View();
+        }
+
+        public ActionResult EventManage()
+        {
+            return View();
+        }
+
+
+
+
     }
 }

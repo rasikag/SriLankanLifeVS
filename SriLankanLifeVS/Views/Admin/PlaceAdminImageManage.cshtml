@@ -1,0 +1,250 @@
+﻿
+@{
+    ViewBag.Title = "PlaceAdminImageManage";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html ng-app="srilankanlife">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <!--  added yeti theame -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <style>
+        .typeahead-demo .custom-popup-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: #f9f9f9;
+        }
+
+            .typeahead-demo .custom-popup-wrapper > .message {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+                color: #868686;
+            }
+
+            .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+                position: static;
+                float: none;
+                display: block;
+                min-width: 160px;
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="container">
+                <div class="logo">
+                    <h1><a href="index.html">Sri Lankan <span>Life</span></a></h1>
+                </div>
+                <div class="top-nav">
+                    <nav>
+                        @*removed below code*@
+                        @*<nav class="navbar navbar-default">*@
+                        <div class="container">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                Menu
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="codes.html">Codes</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <h3>Add Image of this Place</h3>
+        </div>
+    </div>
+    <div>
+        <div ng-controller="PlaceImageAdminController">
+
+            <form name="imageForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-3 form-group"> Place Name : </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="text"
+                                       ng-model="PlaceName"
+                                       placeholder="Town"
+                                       uib-typeahead="PlaceName for PlaceName in getPlaceByName($viewValue)"
+                                       typeahead-loading="loadingLocations"
+                                       typeahead-no-results="noResults1"
+                                       class="form-control"
+                                       ng-required="required">
+                                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                <div ng-show="noResults1">
+                                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                </div>
+                            </div>
+                        </div>
+
+
+                        </br>
+                        </br>
+                        
+                        <input type="file" class="button btn btn-success" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                               ngf-accept="'image/*'" ngf-max-size="2MB" ngf-min-height="100" />
+
+
+                        <div>
+                            <input type="submit" ng-disabled="commentForm.$invalid" class="btn btn-group" value="Submit" ng-click="submitImage(file)" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div ng-show="ImageSubmitSuccess">
+                <p>Image successfullly submited</p>
+            </div>
+
+            <div ng-show="ImageSubmitFail">
+                <p>Image submited fail.Please retry</p>
+            </div>
+
+
+            <div class="row">
+                <loading-spinner>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-info">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-11 col-xs-10">Name</div>
+                                <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Size (kb)</div>
+                                <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Added Date</div>
+                                <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">Active</div>
+                                <div class="col-lg-2 col-md-2">Preview</div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">Remove</div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" ng-show="photos.length === 0">no photos</li>
+                        <li ng-repeat="photo in photos" class="list-group-item">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-11 col-xs-10 wraptext">{{photo.ImageName}}</div>
+                                <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.Size}}</div>
+                                <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">{{photo.AddedDate | date: short}}</div>
+                                <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+                                    <input type="checkbox" ng-model="photo.Active" ng-change="changeActiveImage(photo)" />
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <img ng-src="/Images/AdminUploadedPlaces/{{photo.ImageName}}" style="max-height: 250px" class="img-responsive" />
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
+                                    <button type="button" class="btn btn-xs btn-danger" ng-click="remove(photo)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </loading-spinner>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    </br>
+    </br>
+
+
+
+
+    <div class="footer">
+        <!-- container -->
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid">
+                    <h3>Details</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="codes.html">Codes</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>756 gt globel Place,</li>
+                        <li>CD-Road,M 07 435.</li>
+                        <li>Telephone: +1 234 567 9871</li>
+                        <li>FAX: +1 234 567 9871</li>
+                        <li>Email : <a href="mailto:example@email.com">Example@mail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Google +</a></li>
+                        <li><a href="#">Rss</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid">
+                    <h3>Newsletter</h3>
+                    <form>
+                        <input type="text" placeholder="Email address" required="">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <div class="footer-bottom">
+        <!-- container -->
+        <div class="container">
+            <p> © 2015 Red Wine . All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+        <!-- //container -->
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/AngularJS/angular.js"></script>
+    <script src="~/Scripts/AngularJS/angular-route.js"></script>
+    <script src="~/Scripts/AngularJS/ui-bootstrap-tpls-1.1.2.min.js"></script>
+    <script src="~/Scripts/AngularJS/angular-animate.min.js"></script>
+    <script src="~/Scripts/AngularJS/ng-file-upload.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/PlaceImageManageAdmin/app.js"></script>
+    <script src="~/Scripts/AngularJS/Admin/PlaceImageManageAdmin/Controller/ImageManageController.js"></script>
+</body>
+</html>
+
