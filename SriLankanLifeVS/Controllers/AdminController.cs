@@ -67,7 +67,10 @@ namespace SriLankanLifeVS.Controllers
             return View();
         }
 
-
+        public ActionResult EventAdminImageManage()
+        {
+            return View();
+        }
 
 
     }
