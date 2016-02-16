@@ -18,7 +18,7 @@ srilankanlife.controller('placeController', function placeController($scope, dat
     $scope.addPlace = function (place, townForm) {
         dataPlace.addPlace(place)
             .then(function (respond) {
-
+                getAllPlaces();
                 $scope.messageDiv = false;
                 $scope.messageStatment = respond.data;
                 $scope.place = "";
@@ -28,7 +28,7 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
             }, function (respond) {
 
-
+            getAllPlaces();
                 $scope.messageDiv = false;
                 $scope.messageStatment = respond.data.Message;
 

@@ -83,6 +83,7 @@
                         <blockquote><p>You have just dined, and however scrupulously the slaughterhouse is concealed in the graceful distance of miles, there is complicity.</p><cite>Ralph Waldo Emerson</cite></blockquote>
                     </div>
                 </div>
+
                 <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
                     <div class="sl-slide-inner">
                         <div class="bg-img" style="background-image: url(../../Images/FullScreenSlider/2.png);"></div>
@@ -111,7 +112,6 @@
                         <blockquote><p>I think if you want to eat more meat you should kill it yourself and eat it raw so that you are not blinded by the hypocrisy of having it processed for you.</p><cite>Margi Clarke</cite></blockquote>
                     </div>
                 </div>
-
             </div>
             <!-- /sl-slider -->
             <nav id="nav-arrows" class="nav-arrows">
@@ -137,10 +137,10 @@
             <div class="row">
 
                 <div class="col-md-10">
-                    @foreach (var item in ViewBag.Districts)
+                    @foreach (var item in ViewBag.Districts as List<SriLankanLifeVS.Models.EntityModels.District>)
                     {
                         <div class="col-md-2 Destination-Items">
-                            <span>@item</span>
+                            <span>@Html.ActionLink(item.DistrictName, "Place", new { id = item.Id })</span>
                         </div>
                     }
                 </div>

@@ -1,7 +1,38 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "";
 }
 
 <h2>Index</h2>
+
+<div class="container">
+    <div class="row">
+        <p>@Html.ActionLink("Manage Main Slider Image", "SliderImageManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Districts", "DistrictManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Towns", "TownManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Place Categories", "PlaceCategoryManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Places", "PlaceManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Place Images", "PlaceAdminImageManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Event Categories", "EventCategoryManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Events", "EventManage", "Admin")</p>
+    </div>
+    <div class="row">
+        <p>@Html.ActionLink("Manage Event Images", "EventAdminImageManage", "Admin")</p>
+    </div>
+</div>
 

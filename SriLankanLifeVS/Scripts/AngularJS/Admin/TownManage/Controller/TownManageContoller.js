@@ -17,7 +17,7 @@ srilankanlife.controller('townController', function townController($scope, dataT
     $scope.addTown = function (town, townForm) {
         dataTown.addTown(town)
             .then(function (respond) {
-
+                getAll();
                 $scope.messageDiv = false;
                 $scope.messageStatment = respond.data;
                 $scope.town = "";
