@@ -171,6 +171,43 @@
                     </div>
 
                     </br>
+                    <div class="row">
+                        <h3> Add Category to Place </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group"> Category Name : </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text"
+                                   ng-model="place.CategoryName"
+                                   placeholder="Town"
+                                   uib-typeahead="CategoryName for CategoryName in getPlaceCatByName($viewValue)"
+                                   typeahead-loading="loadingLocations11"
+                                   typeahead-no-results="noResults11"
+                                   class="form-control"
+                                   ng-required="required">
+                            <i ng-show="loadingLocations11" class="glyphicon glyphicon-refresh"></i>
+                            <div ng-show="noResults11">
+                                <i class="glyphicon glyphicon-remove"></i> No Results Found
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button class="btn btn-success" ng-click="addCategoryToPlace(place.CategoryName)">Add Category</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-repeat="a in CategoryArray track by $index">
+                            {{a}}
+                        </div>
+                    </div>
+                    </br>
+                    </br>
+                    </br>
+
 
                     <div class="row">
                         <div class="col-md-2">

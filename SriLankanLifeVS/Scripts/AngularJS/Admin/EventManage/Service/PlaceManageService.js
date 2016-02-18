@@ -46,6 +46,15 @@ srilankanlife.factory('dataPlace', function ($http) {
                 method: 'POST',
                 data : Id
             });
+        },
+        getPlaceCategories: function (cat) {
+            return $http({
+                url: 'http://localhost:58115/api/get-event-categories-in-event',
+                method: 'GET',
+                params: {
+                    Name: cat
+                }
+            });
         }
 
     }

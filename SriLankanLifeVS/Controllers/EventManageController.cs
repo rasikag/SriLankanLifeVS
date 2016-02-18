@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SriLankanLifeVS.Models.TravelContext;
 using SriLankanLifeVS.Models.EntityModels;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace SriLankanLifeVS.Controllers
 {
@@ -30,33 +31,56 @@ namespace SriLankanLifeVS.Controllers
         [Route("api/add-event")]
         public async Task<IHttpActionResult> AddPlace(VMPlace Plc)
         {
-            if (ModelState.IsValid)
-            {
-                Town t = _db.Towns.FirstOrDefault(dis => dis.TownName == Plc.TownName);
-                if (t == null)
-                {
-                    return BadRequest("Town is not difined. Please add a difined town that suggest by the list");
-                }
-
-                Event place = new Event();
-                place.Id = Guid.NewGuid();
-                place.Address = Plc.Address;
-                place.Description = Plc.Discription;
-                place.Latitude = Plc.Latitude;
-                place.Longitude = Plc.Longitude;
-                place.EventName = Plc.PlaceName;
-                place.QuickFacts = Plc.QFacts;
-                place.TownId = t.Id;
-                _db.Events.Add(place);
-                await _db.SaveChangesAsync();
-
-
-                return Ok("Successfully added recode");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 return BadRequest("Model state is not valid");
             }
+            
+
+            Town t = _db.Towns.FirstOrDefault(dis => dis.TownName == Plc.TownName);
+            if (t == null)
+            {
+                return BadRequest("Town is not difined. Please add a difined town that suggest by the list");
+            }
+
+            string[] strings = JsonConvert.DeserializeObject<string[]>(Plc.CategoryName);
+
+            List<EventCategory> cta = new List<EventCategory>();
+
+
+            if (strings != null)
+            {
+                for (int i = 0; i < strings.Count(); i++)
+                {
+                    string n = strings[i];
+                    //.Select(g => new CatId { Id = t.Id })
+                    EventCategory c = _db.EventCategories.Where(cat => cat.CategotyName == n).FirstOrDefault();
+                    if (c == null)
+                    {
+
+                        return BadRequest("Category is not define. Please add correct category");
+                    }
+
+                    cta.Add(c);
+                }
+            }
+
+            Event place = new Event();
+            place.Id = Guid.NewGuid();
+            place.Address = Plc.Address;
+            place.Description = Plc.Discription;
+            place.Latitude = Plc.Latitude;
+            place.Longitude = Plc.Longitude;
+            place.EventName = Plc.PlaceName;
+            place.QuickFacts = Plc.QFacts;
+            place.TownId = t.Id;
+            place.EventCategories = cta;
+            _db.Events.Add(place);
+            await _db.SaveChangesAsync();
+
+
+            return Ok("Successfully added recode");
+
         }
 
         [HttpGet]
@@ -144,6 +168,16 @@ namespace SriLankanLifeVS.Controllers
             {
                 return BadRequest();
             }
+        }
+
+
+        [HttpGet]
+        [Route("api/get-event-categories-in-event")]
+        public IHttpActionResult GetPlaceCategories(string Name)
+        {
+            var twn = _db.EventCategories.Where(p => p.CategotyName.Contains(Name)).Select(t => new { Id = t.Id, CategoryName = t.CategotyName });
+
+            return Ok(twn);
         }
 
     }

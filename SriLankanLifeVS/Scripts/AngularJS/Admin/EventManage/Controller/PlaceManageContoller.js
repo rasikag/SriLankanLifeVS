@@ -4,6 +4,7 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
     $scope.messageDiv = true;
 
+    $scope.CategoryArray = [];
 
     $scope.getTownByName = function (val) {
         return dataPlace.getTownByName(val)
@@ -16,7 +17,25 @@ srilankanlife.controller('placeController', function placeController($scope, dat
     };
 
     $scope.addPlace = function (place, townForm) {
-        dataPlace.addPlace(place)
+
+        var a = JSON.stringify($scope.CategoryArray);
+
+        var obj = {
+            PlaceName: place.PlaceName,
+            Longitude: place.Longitude,
+            Latitude: place.Latitude,
+            Address: place.Address,
+            Discription: place.Discription,
+            QFacts: place.QFacts,
+            TownName: place.TownName,
+            CategoryName: a
+
+        };
+
+        $scope.CategoryArray = [];
+
+
+        dataPlace.addPlace(obj)
             .then(function (respond) {
                 getAllPlaces();
                 $scope.messageDiv = false;
@@ -165,7 +184,7 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
     $scope.deletePlace = function (Id) {
 
-        var obj = {Id : Id};
+        var obj = { Id: Id };
 
         dataPlace.deletePlace(obj).then(
             function (response) {
@@ -173,7 +192,22 @@ srilankanlife.controller('placeController', function placeController($scope, dat
             }, function (response) {
 
             });
-    }
+    };
+
+    $scope.getPlaceCatByName = function (val) {
+        return dataPlace.getPlaceCategories(val)
+             .then(function (response) {
+                 console.log(response);
+                 return response.data.map(function (item) {
+                     return item.CategoryName;
+                 });
+             });
+    };
+
+    $scope.addCategoryToPlace = function (val) {
+        $scope.CategoryArray.push(val);
+        $scope.place.CategoryName = "";
+    };
 
     getAllPlaces();
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc.Routing.Constraints;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -14,10 +15,18 @@ namespace SriLankanLifeVS
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Guid",
+                "{controller}/{action}/{guid}",
+                new { controller = "Home", action = "PlaceDetails" },
+                new { guid = new GuidRouteConstraint() }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }

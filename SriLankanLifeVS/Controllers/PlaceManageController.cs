@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SriLankanLifeVS.Models.TravelContext;
 using SriLankanLifeVS.Models.EntityModels;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace SriLankanLifeVS.Controllers
 {
@@ -31,33 +32,54 @@ namespace SriLankanLifeVS.Controllers
         [Route("api/add-place")]
         public async Task<IHttpActionResult> AddPlace(VMPlace Plc)
         {
-            if (ModelState.IsValid)
-            {
-                Town t = _db.Towns.FirstOrDefault(dis => dis.TownName == Plc.TownName);
-                if (t == null)
-                {
-                    return BadRequest("Town is not difined. Please add a difined town that suggest by the list");
-                }
-
-                Place place = new Place();
-                place.Id = Guid.NewGuid();
-                place.Address = Plc.Address;
-                place.Description = Plc.Discription;
-                place.Latitude = Plc.Latitude;
-                place.Longitude = Plc.Longitude;
-                place.PlaceName = Plc.PlaceName;
-                place.QuickFacts = Plc.QFacts;
-                place.TownId = t.Id;
-                _db.Places.Add(place);
-                await _db.SaveChangesAsync();
-
-
-                return Ok("Successfully added recode");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 return BadRequest("Model state is not valid");
             }
+            Town t = _db.Towns.FirstOrDefault(dis => dis.TownName == Plc.TownName);
+            if (t == null)
+            {
+                return BadRequest("Town is not difined. Please add a difined town that suggest by the list");
+            }
+
+            string[] strings = JsonConvert.DeserializeObject<string[]>(Plc.CategoryName);
+
+            List<PlaceCategory> cta = new List<PlaceCategory>();
+
+            if (strings!=null)
+            {
+                for (int i = 0; i < strings.Count(); i++)
+                {
+                    string n = strings[i]; 
+                    //.Select(g => new CatId { Id = t.Id })
+                    PlaceCategory c = _db.PlaceCategories.Where(cat => cat.CategoryName == n).FirstOrDefault();
+                    if (c == null)
+                    {
+                        
+                        return BadRequest("Category is not define. Please add correct category");
+                    }
+
+                    cta.Add(c);
+                }
+            }
+            
+
+            Place place = new Place();
+            place.Id = Guid.NewGuid();
+            place.Address = Plc.Address;
+            place.Description = Plc.Discription;
+            place.Latitude = Plc.Latitude;
+            place.Longitude = Plc.Longitude;
+            place.PlaceName = Plc.PlaceName;
+            place.PlaceCategories = cta;
+            place.QuickFacts = Plc.QFacts;
+            place.TownId = t.Id;
+            _db.Places.Add(place);
+            await _db.SaveChangesAsync();
+
+
+            return Ok("Successfully added recode");
+
         }
 
         [HttpGet]
@@ -92,7 +114,7 @@ namespace SriLankanLifeVS.Controllers
                 {
                     Guid guid = Guid.Parse(plc.Id);
                     Place p = _db.Places.FirstOrDefault(pl => pl.Id == guid);
-                    if (p!=null)
+                    if (p != null)
                     {
                         p.Address = plc.Address;
                         p.Description = plc.Discription;
@@ -126,11 +148,11 @@ namespace SriLankanLifeVS.Controllers
         [Route("api/delete-place")]
         public IHttpActionResult DeletePlace(VMPlace vmp)
         {
-            if (vmp.Id!=null )
+            if (vmp.Id != null)
             {
                 Guid _guid = Guid.Parse(vmp.Id);
-                Place p = _db.Places.FirstOrDefault( plc => plc.Id == _guid);
-                if (p!=null)
+                Place p = _db.Places.FirstOrDefault(plc => plc.Id == _guid);
+                if (p != null)
                 {
                     _db.Places.Remove(p);
                     _db.SaveChanges();
@@ -145,6 +167,15 @@ namespace SriLankanLifeVS.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpGet]
+        [Route("api/get-place-categories-in-place")]
+        public IHttpActionResult GetPlaceCategories(string Name)
+        {
+            var twn = _db.PlaceCategories.Where(p => p.CategoryName.Contains(Name)).Select(t => new { Id = t.Id, CategoryName = t.CategoryName });
+
+            return Ok(twn);
         }
 
 
@@ -170,8 +201,15 @@ namespace SriLankanLifeVS.Controllers
         public string QFacts { get; set; }
         [Required]
         public string TownName { get; set; }
+        public string CategoryName { get; set; }
+
 
     }
 
+
+    public class CatId
+    {
+        public int Id { get; set; }
+    }
 
 }

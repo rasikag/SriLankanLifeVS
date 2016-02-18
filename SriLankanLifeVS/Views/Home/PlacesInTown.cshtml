@@ -6,3 +6,11 @@
 
 
 
+<div>
+    @foreach (var item in ViewBag.Towns as List<SriLankanLifeVS.Controllers.CovGuid>)
+    {
+        <div class="col-md-2 Destination-Items">
+            <span>@Html.ActionLink(item.PlaceName, "PlaceDetails","Home", new { strId = item.Id },null)</span>
+        </div>
+    }
+</div>

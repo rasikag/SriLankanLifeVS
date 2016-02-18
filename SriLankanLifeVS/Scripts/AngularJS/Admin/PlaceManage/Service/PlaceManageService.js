@@ -27,16 +27,16 @@ srilankanlife.factory('dataPlace', function ($http) {
         getAllPlaces: function () {
             return $http({
                 url: 'http://localhost:58115/api/get-all-places',
-                method : 'GET'
+                method: 'GET'
             });
         },
 
         editPlace: function (obj) {
-            
+
             return $http({
                 url: 'http://localhost:58115/api/edit-place',
                 method: 'POST',
-                data : obj
+                data: obj
             });
         },
 
@@ -44,7 +44,18 @@ srilankanlife.factory('dataPlace', function ($http) {
             return $http({
                 url: 'http://localhost:58115/api/delete-place',
                 method: 'POST',
-                data : Id
+                data: Id
+            });
+        },
+
+
+        getPlaceCategories: function (cat) {
+            return $http({
+                url: 'http://localhost:58115/api/get-place-categories-in-place',
+                method: 'GET',
+                params: {
+                    Name: cat
+                }
             });
         }
 

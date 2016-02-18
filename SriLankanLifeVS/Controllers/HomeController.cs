@@ -50,6 +50,10 @@ namespace SriLankanLifeVS.Controllers
             return View();
         }
 
+
+
+        // this will show all towns 
+
         public ActionResult Place(int id = 1)
         {
             List<VMTownInView> town = _db.Towns.Where(t => t.DistrictId == id).Select(p => new VMTownInView
@@ -62,6 +66,7 @@ namespace SriLankanLifeVS.Controllers
             return View();
         }
 
+        // show all places in a town
 
         public ActionResult PlacesInTown(int id = 1)
         {
@@ -71,9 +76,49 @@ namespace SriLankanLifeVS.Controllers
                 PlaceName = p.PlaceName
             }).ToList();
 
-            ViewBag.Towns = plc;
+            List<CovGuid> covguid = new List<CovGuid>();
+
+
+            for (int i = 0; i<plc.Count; i++)
+            {
+                CovGuid g = new CovGuid();
+                g.Id = plc[i].Id.ToString();
+                g.PlaceName = plc[i].PlaceName;
+
+                covguid.Add(g);
+            }
+
+            ViewBag.Towns = covguid;
             return View();
         }
+
+        // show a details in a place
+
+        public ActionResult PlaceDetails(string strId)
+        {
+            Guid id = Guid.Parse(strId);
+
+            if (id!=null)
+            {
+                var place = _db.Places.Where(p => p.Id == id).Select(t => new VMPlaceInHome
+                {
+                    Id = t.Id,
+                    PlaceName = t.PlaceName,
+                    Longitude = t.Longitude,
+                    Latitude = t.Latitude,
+                    Address = t.Address,
+                    Description = t.Description,
+                    QuickFacts = t.QuickFacts
+                }).FirstOrDefault();
+
+                ViewBag.Place = place;
+            }
+
+
+            
+            return View();
+        }
+
 
 
     }
@@ -93,6 +138,26 @@ namespace SriLankanLifeVS.Controllers
         public string PlaceName { get; set; }
 
     }
+
+    public class CovGuid
+    {
+        public string Id { get; set; }
+        public string PlaceName { get; set; }
+    }
+
+
+    public class VMPlaceInHome
+    {
+        public Guid Id { get; set; }
+        public string PlaceName { get; set; }
+        public long Longitude { get; set; }
+        public long Latitude { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public string QuickFacts { get; set; }
+
+    }
+
 
 
 }

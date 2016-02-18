@@ -455,6 +455,7 @@
     <Content Include="Views\Admin\EventManage.cshtml" />
     <Content Include="Views\Admin\EventAdminImageManage.cshtml" />
     <Content Include="Views\Home\PlacesInTown.cshtml" />
+    <Content Include="Views\Home\PlaceDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,6 +4,7 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
     $scope.messageDiv = true;
 
+    $scope.CategoryArray = [];
 
     $scope.getTownByName = function (val) {
         return dataPlace.getTownByName(val)
@@ -16,7 +17,29 @@ srilankanlife.controller('placeController', function placeController($scope, dat
     };
 
     $scope.addPlace = function (place, townForm) {
-        dataPlace.addPlace(place)
+        
+        var a = JSON.stringify($scope.CategoryArray);
+        //for (var i = 0 ; i < $scope.CategoryArray.length ; i++){
+
+        //}
+
+
+        var obj = {
+            PlaceName: place.PlaceName,
+            Longitude: place.Longitude,
+            Latitude: place.Latitude,
+            Address: place.Address,
+            Discription: place.Discription,
+            QFacts: place.QFacts,
+            TownName: place.TownName,
+            CategoryName: a
+
+        };
+        $scope.CategoryArray = [];
+
+        //console.log(obj);
+
+        dataPlace.addPlace(obj)
             .then(function (respond) {
                 getAllPlaces();
                 $scope.messageDiv = false;
@@ -38,6 +61,8 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
             });
     };
+
+
 
     var getAllPlaces = function getAllPlace() {
         dataPlace.getAllPlaces()
@@ -163,6 +188,16 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
     };
 
+    $scope.getPlaceCatByName = function (val) {
+        return dataPlace.getPlaceCategories(val)
+             .then(function (response) {
+                 console.log(response);
+                 return response.data.map(function (item) {
+                     return item.CategoryName;
+                 });
+             });
+    };
+
     $scope.deletePlace = function (Id) {
 
         var obj = {Id : Id};
@@ -174,6 +209,11 @@ srilankanlife.controller('placeController', function placeController($scope, dat
 
             });
     }
+
+    $scope.addCategoryToPlace = function (val) {
+        $scope.CategoryArray.push(val);
+        $scope.place.CategoryName = "";
+    };
 
     getAllPlaces();
 
